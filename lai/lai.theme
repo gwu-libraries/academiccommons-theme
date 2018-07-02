@@ -5,6 +5,9 @@
  * Preprocess functions for LAI.
  */
 
+/**
+ * Use logo.png instead of logo.svg since External Affairs is just providing us with the former.
+ */
 function lai_preprocess_block(&$variables) {
   switch ($variables['base_plugin_id']) {
     case 'system_branding_block':
