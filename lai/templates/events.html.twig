@@ -1,0 +1,28 @@
+	  
+	  {% if page.header|render %}
+          {{ page.header }}
+      {% endif %}
+
+	   {% if page.page_hero|render %}
+	   		{{ page.page_hero }}
+		{% endif %}
+
+			<div class="container">
+				<div class="row">					
+					
+						<p>Test twig template!</p>
+
+						<p>test_var: {{ list_events }}</p>
+ 
+					</div>
+				</div>
+			</div>
+
+		
+
+	 
+	 
+		
+	  {% if page.footer|render %}
+          {{ page.footer }}
+      {% endif %}

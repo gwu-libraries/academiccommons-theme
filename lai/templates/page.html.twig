@@ -1,0 +1,42 @@
+	  {% if page.header|render %}
+          {{ page.header }}
+      {% endif %}
+
+	   {% if page.page_hero|render %}
+	   		{{ page.page_hero }}
+		{% endif %}
+
+			<div id="main-content" class="container">
+				<div class="row">					
+					
+					{% if page.left_sidebar is empty  %}
+					
+					<div class="col-sm-12">
+						{{ page.content }}
+					</div>
+
+					{% else %}
+					
+					<div class="col-sm-4">
+						{{ page.left_sidebar }}
+					</div>
+					
+					<div class="col-sm-8">
+						{{ page.content }}
+					</div>
+					
+					{% endif %}
+ 
+ 
+					</div>
+				</div>
+			</div>
+
+		
+
+	 
+	 
+		
+	  {% if page.footer|render %}
+          {{ page.footer }}
+      {% endif %}

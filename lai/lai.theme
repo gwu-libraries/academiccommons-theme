@@ -1,0 +1,821 @@
+<?php
+
+/**
+ * @file
+ * Preprocess functions for LAI.
+ */
+
+function lai_preprocess_block(&$variables) {
+  switch ($variables['base_plugin_id']) {
+    case 'system_branding_block':
+      $variables['site_logo'] = '';
+      if ($variables['content']['site_logo']['#access'] && $variables['content']['site_logo']['#uri']) {
+        $variables['site_logo'] = str_replace('.svg', '.png', $variables['content']['site_logo']['#uri']);
+      }
+      break;
+
+  }
+}
+
+use Drupal\Core\Cache\CacheableMetadata;
+
+/**
+ * Prepares variables for the html.html.twig template.
+ */
+function lai_preprocess_html(&$variables) {
+  try {
+    $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+  }
+  catch (Exception $e) {
+    // If the database is not yet available, set default values for these
+    // variables.
+    $variables['is_front'] = FALSE;
+  }
+
+  // If we're on the front page.
+  if (!$variables['is_front']) {
+    // Add unique classes for each page and website section.
+    $path = \Drupal::service('path.current')->getPath();
+    $alias = \Drupal::service('path.alias_manager')->getAliasByPath($path);
+    $alias = trim($alias, '/');
+    if (!empty($alias)) {
+      $name = str_replace('/', '-', $alias);
+      $variables['attributes']['class'][] = 'page-' . $name;
+      list($section,) = explode('/', $alias, 2);
+      if (!empty($section)) {
+        $variables['attributes']['class'][] = 'section-' . $section;
+      }
+    }
+  }
+
+  // Add cachability metadata.
+  $theme_name = \Drupal::theme()->getActiveTheme()->getName();
+  $theme_settings = \Drupal::config($theme_name . '.settings');
+  CacheableMetadata::createFromRenderArray($variables)
+    ->addCacheableDependency($theme_settings)
+    ->applyTo($variables);
+  // Union all theme setting variables to the html.html.twig template.
+  $variables += $theme_settings->getOriginal();
+}
+
+
+/**
+ * Prepares variables for the field.html.twig template.
+ */
+function lai_preprocess_field(&$variables, $hook) {
+  // Make additional variables available to the template.
+  $variables['bundle'] = $variables['element']['#bundle'];
+}
+
+function lai_preprocess_page(&$variables) {
+  //$variables['lai_header'] = get_lai_header();
+  //$variables['content'] = get_content();
+  //$variables['footer'] = get_footer();
+}
+
+
+function get_footer(){ 
+$front_page=$_SERVER['SERVER_NAME'];
+?>
+  	<div class="clear"></div>
+  	
+	</div> <!-- close primary content -->
+  </div> <!-- close content container -->
+</main> <!-- close main container -->
+
+<div class="clear"></div>
+
+<?php 
+	
+if ($campus == "gelman" || $campus == "none") {
+            $streetAdd = "2130 H Street NW";
+            $cityAdd = "Washington, DC 20052";
+            $phoneAdd = "202.994.6558";
+            $phoneAddLink = "12029946558";
+            $emailAdd = "<a href='mailto:gelman@gwu.edu'>gelman@gwu.edu</a>";
+	  }
+	  elseif ($campus == "eckles") {
+            $streetAdd = "Eckles Library<br>2100 Foxhall Road, NW";
+            $cityAdd = "Washington, DC 20007";
+            $phoneAdd = "202.242.6620";
+            $phoneAddLink = "12022426620";
+            $emailAdd = "<a href='mailto:eckles@gwu.edu'>eckles@gwu.edu</a>";
+	  }
+          elseif ($campus == "virginia") {
+            $streetAdd = "VSTC Library<br>44983 Knoll Square #179";
+            $cityAdd = "Ashburn, VA 20147";
+            $phoneAdd = "571.553.8230";
+            $phoneAddLink = "17037268230";
+            $emailAdd = "<a href='mailto:virginia@gwu.edu'>virginia@gwu.edu</a>";
+          }
+          elseif ($campus == "utlc") {
+            $streetAdd = "2130 H Street NW";
+            $cityAdd = "Washington, DC 20052";
+            $phoneAdd = "202.994.4026";
+            $phoneAddLink = "12029944026";
+            $emailAdd = "<a href='mailto:utlc@gwu.edu'>utlc@gwu.edu</a>";
+          }
+	?>
+
+  <!-- MAXS: The Library/LAI footer -->
+    <div class="panel-pane pane-views-panes pane-local-footer-gwtoday-footer-panel-pane">
+      <div class="view view-local-footer view-id-local_footer view-display-id-gwtoday_footer_panel_pane view-dom-id-35ea9cc01c7b4ca0fc9260235ad89820">
+        <div class="view-content">
+          <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+            <div id="gwtoday-local-footer">
+              <div id="gwtoday-footer">
+                <div class="promotional-four-col">
+                  <div class="footer-logo" id="footer-promo-item-1">
+                    <div class="field field-name-field-gwtoday-logo field-type-text-long field-label-hidden">
+                      <div class="field-items">
+                        <div class="field-item even">
+                          <p><a href="https://lai.gwu.edu"><img alt="logo: GW Libraries and Academic Innovation" src="<?php echo $front_page; ?>/themes/lai/images/source/logos/gw_iddol_libraries_2c-90.png"></a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="footer-address" id="footer-promo-item-2">
+                    <div class="field field-name-field-gwtoday-address field-type-text-long field-label-hidden">
+                      <div class="field-items">
+                        <div class="field-item even">
+                          <div>
+                            <span style="line-height: 1.5em;"><?php echo $streetAdd; ?><br></span>
+                          </div>
+                          <div><?php echo $cityAdd; ?><br>
+                            <br>
+                            <p class="mobile-show"><span class="phone" style="line-height: 1.5em;"><a href='tel:<?php echo $phoneAddLink; ?>' class='tel'><?php echo $phoneAdd; ?></a></span></p>
+                            <p class="mobile-hide" style="display: inline-block;"><span class="phone" style="line-height: 1.5em;"><?php echo $phoneAdd; ?></span></p>
+                            <p><span style="line-height: 2.5em;"><?php echo $emailAdd; ?></span></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="footer-social-links" id="footer-promo-item-3">
+                    <div class="field field-name-field-gwtoday-social-links field-type-text-long field-label-hidden">
+                      <div class="field-items">
+                        <div class="field-item even">
+                        <?php if ($campus == "gelman" || $campus == "none"): ?>
+                          <p><a href="https://twitter.com/gelmanlibrary" alt="logo: Twitter" target="_blank"><img alt="" src="<?php echo $front_page; ?>/themes/lai/images/source/icons/twitter-logo.png" style="width: 33px; height: 26px;"></a></p>
+                          <p><a href="https://twitter.com/gelmanlibrary" target="_blank">Follow us on Twitter</a></p>
+                          <p><a href="https://www.facebook.com/gelmanlibrary" alt="logo: Facebook" arget="_blank"><img alt="" src="<?php echo $front_page; ?>/themes/lai/images/source/icons/facebook-logo.png" style="width: 33px;"></a></p>
+                          <p><a href="https://www.facebook.com/gelmanlibrary">Like us on Facebook</a></p>
+                        <?php elseif ($campus == "eckles"): ?>
+                          <p><a href="https://twitter.com/eckleslibrary" alt="logo: Twitter" target="_blank"><img alt="" src="<?php echo $front_page; ?>/themes/lai/images/source/icons/twitter-logo.png" style="width: 33px; height: 26px;"></a></p>
+                          <p><a href="https://twitter.com/eckleslibrary" target="_blank">Follow us on Twitter</a></p>
+                          <p><a href="https://www.facebook.com/eckleslibrary" alt="logo: Facebook" arget="_blank"><img alt="" src="<?php echo $front_page; ?>/themes/lai/images/source/icons/facebook-logo.png" style="width: 33px;"></a></p>
+                          <p><a href="https://www.facebook.com/eckleslibrary">Like us on Facebook</a></p>
+
+                        <?php elseif ($campus == "virginia"): ?>
+                          <p><a href="https://www.facebook.com/vstclibrary" alt="logo: Facebook" arget="_blank"><img alt="" src="<?php echo $front_page; ?>/themes/lai/images/source/icons/facebook-logo.png" style="width: 33px;"></a></p>
+                          <p><a href="https://www.facebook.com/vstclibrary">Like us on Facebook</a></p>
+
+                        <?php elseif ($campus == "utlc"): ?>
+                          <p><a href="https://www.youtube.com/user/GWUTLC" alt="logo: YouTube" arget="_blank"><img alt="" src="<?php echo $front_page; ?>/themes/lai/images/source/icons/youtube-logo.png" style="width: 33px;"></a></p>
+                          <p><a href="https://www.youtube.com/user/GWUTLC">UTLC on YouTube</a></p>
+
+                        <?php endif; ?>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="footer-quick-links" id="footer-promo-item-4">
+                    <div class="field field-name-field-gwtoday-quick-links field-type-text-long field-label-hidden">
+                      <div class="field-items">
+                        <div class="field-item even">
+                          <?php if ($campus == "utlc"): ?>
+                          <a href="/utlc/contact">Contact UTLC</a><br/>
+                          <a href="/about/facilities/maps">Maps &amp; Directions</a><br/>
+                          <a href="/accessibility">Accessibility</a><br/>
+                          <a href="https://lai.gwu.edu/staff-info">Staff Information</a><Br/>
+                          <a href="/user">Staff Login</a><br/>
+                          <?php else: ?>
+                          <a href="/hours">Hours</a><br>
+                          <a href="/contact">Contact Us</a><br>
+                          <a href="/about/feedback">Send Feedback</a><br>
+                          <a href="/about/facilities/maps">Maps &amp; Directions</a><br>
+                          <a href="http://library.gwu.edu/accessibility">Accessibility</a><br>
+                          <a href="http://go.gwu.edu/gwlibraries">Give to GW Libraries</a><br>
+                          <a target="_blank" href="https://lai.gwu.edu/staff-info">Staff Information</a><br>
+                          <a href="https://<?php print $_SERVER['SERVER_NAME']; ?>/user">Staff Login</a><br>
+                          <?php endif; ?>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- MAXS: The blue GW-wide footer -->
+<footer class="region region-footer" id="footer">
+  <div id="footer-wrapper">
+    <div class="footer-logof">
+      <a href="http://www.gwu.edu/" rel="home" alt="logo: the George Washington University" target="_blank"><img alt="GW logo" height="42" src="<?php echo $front_page; ?>/themes/lai/images/source/logos/gw_txh_2cs_rev.png" typeof="foaf:Image" width="300"></a>
+    </div>
+    <div class="row-one">
+      <ul>
+        <li>
+          <a href="http://www.campusadvisories.gwu.edu/" target="_blank">Campus Advisories</a>
+        </li>
+        <li>
+          <a href="http://my.gwu.edu/files/policies/EqualEmploymentOpportunityStatement.pdf" target="_blank">Non-Discrimination Policy</a>
+        </li>
+        <li>
+          <a href="http://www.gwu.edu/privacy-policy" target="_blank">Privacy Policy</a>
+        </li>
+      </ul>
+    </div>
+    <div class="row-two">
+      <ul>
+        <li>
+          <a href="http://www.gwu.edu/contact-gw" target="_blank">Contact GW</a>
+        </li>
+        <li>
+          <a href="http://www.gwu.edu/terms-use" target="_blank">Terms of Use</a>
+        </li>
+        <li>
+          <a href="http://www.gwu.edu/copyright" target="_blank">Copyright</a>
+        </li>
+        <li>
+          <a href="http://www.gwu.edu/az-index" target="_blank">A-Z Index</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+	<!-- responsive opt-out links -->
+	<div>
+	  <?php echo $_SESSION['respOptString'] ?>
+	</div>
+<?php }
+
+function get_scroll(){
+$isfront_page = get_isFront();
+?>
+	
+<!-- this is in the new header file at the moment <main id="maincontent" class="main-container center-content">-->
+
+        <?php if(!$isfront_page && ($_SERVER["REQUEST_URI"] != '/news-events')): ?>
+	<!-- floating navigation "top" button -->
+
+
+	<div style="display:none;" id="backToTopContainer">
+		<a href="#" title="top of page">
+		  <div class="back-to-top" id="backToTop" style="background-position:0 -40px;" onmouseover="javascript:document.getElementById('backToTop').style.backgroundPosition='0 0px';" onmouseout="javascript:document.getElementById('backToTop').style.backgroundPosition='0 -40px';" onblur="javascript:document.getElementById('backToTop').style.backgroundPosition='0 -40px';">
+		  </div>
+	  </a>
+	</div>
+        <!-- end floating navigation -->
+	<?php endif; ?>
+	
+<?php }
+
+function get_isFront(){
+	if (\Drupal::service('path.matcher')->isFrontPage()){
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function get_header(){
+	
+$isFront = \Drupal::service('path.matcher')->isFrontPage();
+
+	
+if (!$isFront) {
+    $campus = 'none';
+  }
+  else if (false !== stripos($_SERVER["REQUEST_URI"], 'eckles')) {
+    $campus = 'eckles';
+  }
+  else if (false !== stripos($_SERVER["REQUEST_URI"], 'virginia')) {
+    $campus = 'virginia';
+  }
+  else if (false !== stripos($_SERVER["REQUEST_URI"], 'utlc')) {
+          $campus = 'utlc';
+  }
+  else {
+    $campus = 'gelman';
+  }
+?>
+
+<?php if ( ($_SERVER['SERVER_NAME']=="backup.library.gwu.edu") || ($_SERVER['SERVER_NAME']=="dev.library.gwu.edu") ): ?>
+  <div style="background-color:#FFFF00">
+    <div class="staging-header-message">
+      <span style="color:#FC2847"><?php echo $_SERVER['SERVER_NAME'];?></span>
+    </div>
+  </div>
+<?php endif; ?>
+
+
+<div id="topheader-container" <?php if($campus == 'eckles' || $campus == 'virginia'): ?>class="is-branch"<?php endif; ?>>
+
+  <div id="topheader-content">
+
+    <div id="gwlogo-topheader">
+      <a href="<?php echo $front_page; ?>" aria-label="GW Libraries home page">
+        <img src="<?php echo $front_page; ?>/themes/lai/images/source/logos/gw_iddol_libraries_1cs_pos.png" alt="logo: The George Washington University Libraries" width="199" height="90">
+        <span class="sr-only">GW Libraries home page</span>
+      </a>
+    </div>
+
+    <p id="lai-division">
+      A division of <a target="_blank" href="https://lai.gwu.edu">Libraries and Academic Innovation</a>
+    </p>
+
+    <?php if ($campus == 'gelman' OR $campus == 'none'): ?>
+      <div id='header-hours'>
+        <?php print render($page['topheader_right']); ?>
+      </div>
+    <?php endif; ?> 
+
+
+<div class="limiter">
+  <div id="local-header">   
+  </div>
+</div>
+
+<!-- Emergency Notice Banner -->
+
+
+
+</div>
+</div> <!--end topheader-container -->
+
+
+
+
+<?php } //end get_lai_header()
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function get_primary_nav(){ 
+$campus="gelman";
+	$front_page="https://".$_SERVER['SERVER_NAME'];
+?>
+<!-- Primary Navigation -->
+   <nav id="secondary-nav"><!-- this is gw libraries 'primary nav' -->
+				<!-- handheld ios button behavior is controlled in jsbottom -->						
+				<ul class="menu nav-menu"><!-- determine campus -->
+				
+				<li class="first-prim expanded nav-item" id="nav-research">
+	          <a href="<?php echo $front_page; ?>/research" >Research</a>
+	          <div class='sub-nav research-nav'>
+	          <ul class='sub-menu-group'>
+							<li class='touch-show-nav touch-nav-main-link'><a href='<?php echo $front_page; ?>/research'>RESEARCH</a></li>
+							<li class='first leaf leaf-section-title'>Find</li>
+							<li class='leaf' ><a href='http://findit.library.gwu.edu/catalog/' >Books & Media</a></li>
+							<li class='leaf'><a href='http://findit.library.gwu.edu/' >Journals</a><span class='leaf-extended'> | <a href='<?php echo $front_page; ?>/howdoi/findarticlecitation' >Tutorial</a></span></li>
+							<li class='leaf'><a href='http://libguides.gwu.edu/databases' >Subject Databases</a><span class='leaf-extended'> | <a href='<?php echo $front_page; ?>/howdoi/findarticlesbytopic' >Tutorial</a></span></li>
+							<li class='leaf'><a href='http://gw.summon.serialssolutions.com/' >ArticlesPlus</a><span class='leaf-extended'> | <a href='<?php echo $front_page; ?>/howdoi/aboutarticlesplus' >Tutorial</a></span></li>
+							<li class='leaf'><a href='http://catalog.wrlc.org'>Classic Catalog</a></li>
+                            <li class='leaf'><a href='https://scholarspace.library.gwu.edu' >GW ScholarSpace</a></li>
+							<li class='first leaf leaf-section-title leaf-section-title-linked'><a href='http://libguides.gwu.edu/'>Research Guides</a></li>
+							<li class='leaf'><a href='http://libguides.gwu.edu/' >Subjects: </a><span class='leaf-extended'><a href='http://libguides.gwu.edu/content.php?pid=12823' >Art</a> | <a href='http://libguides.gwu.edu/content.php?pid=17054' >Psychology</a> | <a href='http://libguides.gwu.edu/' >More...</a></span></li>
+							<li class='leaf'><a href='http://libguides.gwu.edu/' >Topics: </a><span class='leaf-extended'><a href='http://libguides.gwu.edu/content.php?pid=12069' >Industry</a> | <a href='http://libguides.gwu.edu/content.php?pid=112501' >Grants</a> | <a href='http://libguides.gwu.edu/' >More...</a></span></li>	
+							<li class='leaf'><a href='http://libguides.gwu.edu/' >Tools: </a><span class='leaf-extended'><a href='http://libguides.gwu.edu/content.php?pid=23115'>RefWorks</a> | <a href='http://libguides.gwu.edu/content.php?pid=8881' >Citation Styles</a> | <a href='http://libguides.gwu.edu/' >More...</a></span></li>
+							<li class='leaf' ><a href='<?php echo $front_page; ?>/howdoi' >How Do I? (Tutorials)</a></li>
+							<li class='leaf leaf-section-title'>Get Help</li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/help/reference/ask-us'>Ask Us</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/reference/research-consultations' >Research Consultation</a></li>
+	            			<li class='leaf' ><a href='<?php echo $front_page; ?>/reference/directory' >Research Staff</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/howdoi' >How Do I? (Tutorials)</a></li>					
+                            <li class='leaf last' ><a href='https://undergraduate.research.gwu.edu/' >Center for Undergraduate Fellowships & Research</a></li>
+					  </ul>
+					  </div>
+					</li>
+												
+					<li class="expanded nav-item" id="nav-collections">
+					  <a href="<?php echo $front_page; ?>/collections" >Collections</a>
+					  <div class='sub-nav'>
+						<ul class='sub-menu-group'>
+							<li class='touch-show-nav touch-nav-main-link'><a href='<?php echo $front_page; ?>/collections'>COLLECTIONS</a></li>
+							<li class='first leaf'><a href='<?php echo $front_page; ?>/scrc' >Special Collections Research Center</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/grc' >Global Resources Center</a></li>
+							<li class='leaf'><a style='text-transform:none;' href='<?php echo $front_page; ?>/art-design' >Art & Design Collection from the Corcoran</a></li>
+							<li class='leaf'><a href='http://teamstersarchives.gwu.edu/' >Teamsters Labor History Research Center</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/scrc/university-archives' >University Archives</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/collections/kiev' >Kiev Judaica Collection</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/churchillcenter' >National Churchill Library & Center</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/collections/media-resources-center'  >Media</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/collections-assessment'  >Collections Assessment &amp; Development</a></li>
+							<li class='last leaf'><a href='<?php echo $front_page; ?>/collections' >(more...)</a></li>
+						</ul>
+						</div>
+					</li>								
+		
+					<li class="expanded nav-item" id="nav-services">
+					  <a href="<?php echo $front_page; ?>/services" >Library Services</a>
+					  <div class='sub-nav'>
+						<ul class='sub-menu-group'>
+							<li class='touch-show-nav touch-nav-main-link'><a href='<?php echo $front_page; ?>/services'>LIBRARY SERVICES</a></li>
+							<li class='first leaf'><a href='https://lai.gwu.edu/stemworks' >STEMworks</a>
+							<li class='leaf'><a href='https://writingcenter.gwu.edu/'>Writing Center</a>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/services/computers-wireless' >Computers & Wireless</a></li>
+                            <li class='leaf'><a href='<?php echo $front_page; ?>/services/computers-wireless/printing' >Printing</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/services/off-campus-services' >Off-Campus Students</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/services/borrowing-renewing' >Borrow & Renew</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/services/reserves' >Course Reserves</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/services/consortium-loan' >Consortium Loan</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/etd' >Electronic Dissertations</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/research/data-services' >Data Services</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/services/interlibrary-loan' >Interlibrary Loan</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/services/library-instruction'>Library Instruction</a></li>
+							<li class='leaf'><a href='http://libguides.gwu.edu/facultyresources' >Faculty Resources</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/contact' >Contact Us</a></li>
+							<li class='last leaf'><a href='<?php echo $front_page; ?>/services' >(more...)</a></li>
+						</ul>
+						</div>					
+					</li>
+						
+					<li class="expanded nav-item" id="nav-news">
+					  <a href="<?php echo $front_page; ?>/news-events" >News & Events</a>
+					  <div class='sub-nav'>
+						<ul class='sub-menu-group'>
+							<li class='touch-show-nav touch-nav-main-link'><a href='<?php echo $front_page; ?>/news-events'>NEWS & EVENTS</a></li>
+							<li class='first leaf'><a href='<?php echo $front_page; ?>/news-events' >News</a></li>
+                            <li class='leaf'><a href='<?php echo $front_page; ?>/news-events/upcoming-events' >Upcoming Events</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/news-events/blogs-and-social-media' >Blogs and Social Media</a></li>
+							<li class='leaf'><a href='https://lai.gwu.edu/magazine' target='_blank'>Vision Magazine</a></li>
+                            <li class='leaf'><a href='http://acadtech.gwu.edu/press-room' >Academic Technologies Press Room</a></li>
+                            <li class='leaf'><a href='<?php echo $front_page; ?>/showcases' >Digital Showcases</a></li>
+						</ul>
+						</div>
+					</li>
+						
+					<li class="expanded nav-item" id="nav-about">
+					  <a href="<?php echo $front_page; ?>/about" >About</a>
+					  <div class='sub-nav'>
+						<ul class='sub-menu-group'>
+						  <li class='touch-show-nav touch-nav-main-link'><a href='<?php echo $front_page; ?>/about'>ABOUT GW LIBRARIES</a></li>
+							<li class='first leaf'><a href='<?php echo $front_page; ?>/hours' >Hours</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/about/facilities/maps' >Maps & Directions</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/about/organization/jobs' >Working at GW Libraries</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/about/staff-directory' >Staff Directory</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/about/library-departments' >Library Departments</a></li>
+                            <li class='leaf'><a target='_blank' href='https://lai.gwu.edu' >Libraries & Academic Innovation</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/about/entrance-policies' >Entrance Policies</a></li>
+							<li class='leaf'><a target='_blank' href='https://lai.gwu.edu/vision' >Vision</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/about/giving' >Donor Information</a></li>
+							<li class='leaf'><a href='<?php echo $front_page; ?>/contact' >Contact Us</a></li>
+							<li class='last leaf' id="last"><a href='<?php echo $front_page; ?>/about' >(more...)</a></li>
+						</ul>
+						</div>
+					</li>	
+	  			 </ul>
+			</nav>
+      
+			
+	<?php } //end get_primary_nav()
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function get_front_page_hero(){ 
+		$front_page="https://".$_SERVER['SERVER_NAME'];
+?>
+
+<!--<script>document.createElement('main'); //for IE compatibility with semantic elements</script>-->
+
+<!--<main id="maincontent" class="main-container center-content">-->
+  <div id="hero">
+    <div id="hero-image">
+      <img alt="background image: Gelman library" src="<?php echo $front_page; ?>/themes/lai/images/source/editorial-bg-23.jpg" />
+    </div>
+
+
+
+<!-- Homepage Searchbox -->
+  <div id="home-search">
+    <h3>What would you like to find at the libraries today?</h3>
+    <form id="search-form" onsubmit="return false;">
+    <div class="search-dropdown">
+      <div class="search-dropdown-inner">
+      <a href="#" aria-haspopup="true" class="current-search-text">Search All</a>
+      <ul class="search-dropdown-ul">
+      <li id="search-all" data-placeholder="<?php echo $bentoPlaceholder; ?>">
+            <span class="search-label" tabindex="0">Search All</span>
+            <div class="search-description">Articles and books, plus library databases, <a href="http://libguides.gwu.edu/" tabindex="-1">research guides</a> and tutorials</div>
+        </li>
+        <li id="search-articlesplus" data-placeholder="Fidel Castro, sustainable energy, gender and identity ...">
+            <span class="search-label" tabindex="0">ArticlesPlus</span>
+          <div class="search-description">Journal &amp; newspaper articles, plus books and more</div>
+        </li>
+        <li id="search-catalog" data-placeholder="The Communist Manifesto, calculus, Blade Runner ...">
+            <span class="search-label" tabindex="0">Books & More</span>
+        <div class="search-description">Books (including e-books), A/V media, and archival resources <div class="search-subdescription">Search the <a href="http://catalog.wrlc.org/">classic catalog</a></div></div>
+      </li>
+      <li id="search-journals" data-placeholder="Wall Street Journal, Journal of American History, sociology, ...">
+        <span class="search-label" tabindex="0">Browse Journals</span>
+        <div class="search-description">Online access to journals and other periodicals, by subject area and title</div>
+      </li>
+      <li id="search-website" data-placeholder="building hours, study rooms, Churchill ...">
+        <span class="search-label" tabindex="0">Library Website</span>
+        <div class="search-description">Library policies, news and events, and research help</div>
+        </li>
+      </ul>
+      </div>
+    </div>
+
+    <input type="text" id="searchtext" aria-label="searchbox: enter your search terms here" placeholder="<?php echo $bentoPlaceholder; ?>"/>
+    <select id="catalog-options">
+      <option>title</option>
+      <option>journal title</option>
+      <option selected="selected">keyword</option>
+      <option>author</option>
+      <option>subject</option>
+      <option>call number</option>
+    </select>
+    <select id="journals-options">
+      <option>title begins with</option>
+      <option>title (exact)</option>
+      <option selected="selected">title keywords</option>
+      <option>ISSN</option>
+    </select>
+      <input type="submit" value="Go" id="submitButton"/>
+    </form>
+    <p id="home-search-explanation">
+      Articles and books, plus library databases, <a href="http://libguides.gwu.edu/">research guides</a> and tutorials
+    </p>
+
+  </div>
+
+</div> <!-- closing hero div -->
+
+<?php } //end get_front_page_hero()
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function get_page_hero(){ 
+$front_page="https://".$_SERVER['SERVER_NAME'];
+?>
+
+<!--<script>document.createElement('main'); //for IE compatibility with semantic elements</script>-->
+
+<!--<main id="maincontent" class="main-container center-content">-->
+  <div id="hero">
+    <div id="hero-image">
+      <img alt="background image of Gelman Library" src="<?php echo $front_page; ?>/themes/lai/images/source/gelman-10.jpg"/>
+      <div id="branch-name">
+        Gelman Library at the Foggy Bottom Campus
+      </div>
+    </div>
+<!--
+    <div id="hero-image">
+      <img alt="hero image of UTLC activities" src="<?php echo $front_page; ?>/themes/lai/images/source/utlc-hero-02.jpg"/>
+    </div>
+-->
+
+
+<!-- Internal Page Searchbox -->
+    <div id="internal-search">
+	  <form id="search-form">
+		<div id="search-dropdown">
+		  <div id="current-search-text"><a href="#" aria-haspopup="true" aria-controls="home-search-dropdown-ul" id="current-search-text-a">Search All</a></div>
+		  <ul id="home-search-dropdown-ul" aria-labelledby="current-search-text-a">
+			<li id="search-all" data-placeholder="<?php echo $bentoPlaceholder; ?>">
+			  <a href="#">
+		        <span class="search-label">Search All</span>
+		        <div class="search-description">Articles and books, plus library databases, research guides and tutorials</div>
+			  </a>
+		    </li>
+		    <li id="search-articlesplus" data-placeholder="Fidel Castro, sustainable energy, gender and identity ...">
+			  <a href="#">
+		        <span class="search-label">ArticlesPlus</span>
+			    <div class="search-description">Journal &amp; newspaper articles, plus books and more</div>
+			  </a>
+		    </li>
+		    <li id="search-catalog" data-placeholder="The Communist Manifesto, calculus, Blade Runner ...">
+		      <a href="#">
+		        <span class="search-label">Books & More</span>
+				<div class="search-description">Books (including e-books), A/V media, and archival resources</div>
+			  </a>
+			</li>
+			<li id="search-journals" data-placeholder="Wall Street Journal, Journal of American History, sociology, ...">
+		      <a href="#">
+				<span class="search-label">Browse Journals</span>
+				<div class="search-description">Online access to journals and other periodicals, by subject area and title</div>
+			  </a>
+			</li>
+			<li id="search-website" data-placeholder="building hours, study rooms, Churchill ...">
+		      <a href="#">
+				<span class="search-label">Library Website</span>
+				<div class="search-description">Library policies, news and events, and research help</div>
+			  </a>
+		    </li>
+		  </ul>
+		</div>
+	    <input type="text" aria-label="searchbox: enter your search terms here" placeholder="<?php echo $bentoPlaceholder; ?>" />
+		<select id="catalog-options">
+		  <option>title</option>
+		  <option>journal title</option>
+		  <option selected="selected">keyword</option>
+		  <option>author</option>
+		  <option>subject</option>
+		  <option>call number</option>
+		</select>
+		<select id="journals-options">
+		  <option>title begins with</option>
+		  <option>title (exact)</option>
+		  <option selected="selected">title keywords</option>
+		  <option>ISSN</option>
+		</select>
+		<input type="image" src="<?php echo $front_page; ?>/themes/lai/images/source/search.png" alt="Submit search"/>
+	  </form>
+	</div>
+
+
+
+</div> <!-- closing hero div -->
+
+<?php } //end get_page_hero()
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function get_non_frontpage_resource_images(){ ?>
+	
+<?php if(!$isFront && $campus !== 'utlc'): ?>
+		<div class="promotional-six-col" id="internal-featured-services">
+				<div class="promo-items-item">
+                                <div class="promo-label">
+				<div class="promo-image"><a href="/help/reference/ask-us" onclick="ga('send', 'event', 'service links', 'ask-us (internal <?php echo $campus; ?>)');"><img alt="icon: ask us for help" src="<?php echo $front_page; ?>/themes/lai/images/source/icons/icon-ask-us.png"></a></div>
+								<h4 class="promo-title"><a href="/help/reference/ask-us" onclick="ga('send', 'event', 'service links', 'ask-us (internal <?php echo $campus; ?>)');">Ask Us</a></h4>
+</span>
+							</div>
+                                </div>
+				<div class="promo-items-item">
+                                <div class="promo-label">
+				<div class="promo-image"><a href="/about/facilities/study-room-reservations" onclick="ga('send', 'event', 'service links', 'rooms (internal <?php echo $campus; ?>)');"><img alt="icon: reserve a study room" src="<?php echo $front_page; ?>/themes/lai/images/source/icons/icon-study-rooms.png"></a></div>
+								<h4 class="promo-title"><a href="/about/facilities/study-room-reservations" onclick="ga('send', 'event', 'service links', 'rooms (internal <?php echo $campus; ?>)');">Study Room Reservations</a></h4>
+</span>
+							</div>
+                                </div>
+				<div class="promo-items-item">
+                                <div class="promo-label">
+				<div class="promo-image"><a href="https://mylibrary.wrlc.org/" onclick="ga('send', 'event', 'service links', 'my account (internal <?php echo $campus; ?>)');"><img alt="icon: my library account" src="<?php echo $front_page; ?>/themes/lai/images/source/icons/icon-my-account.png"></a></div>
+									<h4 class="promo-title"><a href="https://mylibrary.wrlc.org/" onclick="ga('send', 'event', 'service links', 'my account (internal <?php echo $campus; ?>)');">My Account</a></h4>
+</span>
+							</div>
+                                </div>
+				<div class="promo-items-item">
+                                <div class="promo-label">
+				<div class="promo-image"><a href="http://libguides.gwu.edu/databases" onclick="ga('send', 'event', 'service links', 'databases (internal <?php echo $campus; ?>)');"><img alt="icon: access our databases" src="<?php echo $front_page; ?>/themes/lai/images/source/icons/icon-databases.png"></a></div>
+									<h4 class="promo-title"><a href="http://libguides.gwu.edu/databases" onclick="ga('send', 'event', 'service links', 'databases (internal <?php echo $campus; ?>)');">Databases</a></h4>
+</span>
+							</div>
+                                </div>
+				<div class="promo-items-item">
+                                <div class="promo-label">
+				  <div class="promo-image"><a href="/news-events/upcoming-events?field_event_format_value=1" onclick="ga('send', 'event', 'service links', 'workshops (internal <?php echo $campus; ?>)');"><img alt="icon: workshops" src="<?php echo $front_page; ?>/themes/lai/images/source/icons/icon-workshops.png"></a></div>
+									<h4 class="promo-title"><a href="/news-events/upcoming-events?field_event_format_value=1" onclick="ga('send', 'event', 'service links', 'workshops (internal <?php echo $campus; ?>)');">Workshops</a></h4>
+</span>
+				  </div>
+                                </div>
+				<div class="promo-items-item has-promo-body">
+                                <div class="promo-label">
+				<div class="promo-image"><a href="#"><img alt="icon: all GW libraries" src="<?php echo $front_page; ?>/themes/lai/images/source/icons/icon-all-libraries.png"></a></div>
+									<h4 class="promo-title"><a href="#">All GW Libraries</a></h4>
+
+							</div>
+<span class="promo-body">
+	<ul>
+	<li><a href="/">Estelle and Melvin Gelman Library</a></li>
+	<li><a href="/eckles">Eckles Library at the Mount Vernon Campus</a></li>
+	<li><a href="/virginia">Virginia Science and Technology Campus Library</a></li>
+	</ul>
+	<hr/>
+	<ul>
+	<li><a target="_blank" href="https://himmelfarb.gwu.edu/" class="external-link">Himmelfarb Health Sciences Library <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
+	<li><a target="_blank" href="https://www.law.gwu.edu/library" class="external-link">Jacob Burns Law Library <i class="fa fa-external-link" aria-hidden="true"></i></a></li>
+	</li>
+	</ul>
+</span>
+
+						</div>
+                                            </div>
+
+
+<?php endif; ?>
+	
+	
+	
+	
+	
+	
+<?php } //end get_non_frontpage_resource_images()
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function get_front_page_content() { ?>
+
+<div class="promotional-five-col" id="featured-services">
+<div class="promo-items-item">
+<div class="promo-image"><a href="/help/reference/ask-us" onclick="ga('send', 'event', 'service links', 'ask-us (home wide)');"><img alt="icon: ask us for help!" src="/themes/lai/images/source/icons/icon-ask-us.png" style="width: 150px; height: 100px;" /></a></div>
+
+<h4 class="promo-title"><a href="/help/reference/ask-us" onclick="ga('send', 'event', 'service links', 'ask-us (home wide)');">Ask Us</a></h4>
+
+<p><span class="promo-body">Need help with something? Get in touch.</span></p>
+</div>
+
+<div class="promo-items-item">
+<div class="promo-image"><a href="/about/facilities/study-room-reservations" onclick="ga('send', 'event', 'service links', 'rooms (home wide)');"><img alt="icon: study room reservations" src="/themes/lai/images/source/icons/icon-study-rooms.png" style="width: 150px; height: 100px;" /></a></div>
+
+<h4 class="promo-title"><a href="/about/facilities/study-room-reservations" onclick="ga('send', 'event', 'service links', 'rooms (home wide)');">Study Room Reservations</a></h4>
+
+<p><span class="promo-body">Reserve a group study room.</span></p>
+</div>
+
+<div class="promo-items-item">
+<div class="promo-image"><a href="https://mylibrary.wrlc.org/" onclick="ga('send', 'event', 'service links', 'my account (home wide)');"><img alt="icon: my library account" src="/themes/lai/images/source/icons/icon-my-account.png" style="width: 150px; height: 100px;" /></a></div>
+
+<h4 class="promo-title"><a href="https://mylibrary.wrlc.org/" onclick="ga('send', 'event', 'service links', 'my account (home wide)');">My Account</a></h4>
+
+<p><span class="promo-body">Check due dates, access saved articles, etc.</span></p>
+</div>
+
+<div class="promo-items-item">
+<div class="promo-image"><a href="http://libguides.gwu.edu/databases" onclick="ga('send', 'event', 'service links', 'databases (home wide)');"><img alt="icon: subject databases" src="/themes/lai/images/source/icons/icon-databases.png" style="width: 150px; height: 100px;" /></a></div>
+
+<h4 class="promo-title"><a href="http://libguides.gwu.edu/databases" onclick="ga('send', 'event', 'service links', 'databases (home wide)');">Subject Databases</a></h4>
+
+<p><span class="promo-body">Find by topic or by the A-Z listing.</span></p>
+</div>
+
+<div class="promo-items-item">
+<div class="promo-image"><a href="/news-events/upcoming-events?field_event_format_value=1" onclick="ga('send', 'event', 'service links', 'workshops (home wide)');"><img alt="icon: workshops at GW Libraries" src="/themes/lai/images/source/icons/icon-workshops.png" style="width: 150px; height: 100px;" /></a></div>
+
+<h4 class="promo-title"><a href="/news-events/upcoming-events?field_event_format_value=1" onclick="ga('send', 'event', 'service links', 'workshops (home wide)');">Workshops</a></h4>
+
+<p><span class="promo-body">Come learn about new topics.</span></p>
+</div>
+</div>
+
+<div id="branches">
+<div id="branches-icon"><img alt="icon: all GW Libraries" src="/themes/lai/images/source/icons/icon-all-libraries.png" style="width: 40px; height: 27px;" /></div>
+
+<div id="branches-content">
+<header class="major">
+<h2 class="pane-title">All GW Libraries</h2>
+</header>
+
+<div class="promotional-three-col">
+<div class="promo-items-item">
+<div class="promo-image"><img alt="image: Gelman Library building entrance" src="/themes/lai/images/source/all-libraries-gelman.jpg" style="width: 255px; height: 191px;" /></div>
+
+<h4 class="promo-title">Estelle and Melvin Gelman Library</h4>
+</div>
+
+<div class="promo-items-item">
+<div class="promo-image"><a href="/eckles"><img alt="image: Eckles Library at Mount Vernon Campus" src="/themes/lai/images/source/all-libraries-eckles.jpg" style="width: 255px; height: 191px;" /></a></div>
+
+<h4 class="promo-title"><a href="/eckles">Eckles Library at the Mount Vernon Campus</a></h4>
+</div>
+
+<div class="promo-items-item">
+<div class="promo-image"><a href="/virginia"><img alt="image: Virginia Science and Technology Campus Library at Ashburn" src="/themes/lai/images/source/all-libraries-virginia.jpg" style="width: 255px; height: 175px;" /></a></div>
+
+<h4 class="promo-title"><a href="/virginia">Virginia Science and Technology Campus Library</a></h4>
+</div>
+</div>
+
+<div id="branches-other">
+<p>Also at the George Washington University:</p>
+
+<h4><a class="external-link" target="_blank" href="https://himmelfarb.gwu.edu/">Himmelfarb Health Sciences Library</a> <i class="fa fa-external-link" aria-hidden="true"></i></h4>
+
+<h4><a class="external-link" target="_blank" href="https://www.law.gwu.edu/library">Jacob Burns Law Library</a> <i class="fa fa-external-link" aria-hidden="true"></i></h4>
+</div>
+</div>
+
+<?php }
+
+function get_front_page_academic_success(){ ?>
+<div id="academic-success-resources">
+<header class="major">
+<h2 class="title block-title">Academic Success Resources</h2>
+</header>
+
+<div class="promotional-two-col">
+<div class="promo-items-item">
+<div class="promo-image"><a href="https://lai.gwu.edu/stemworks"><img alt="logo: STEMworks" src="/themes/lai/images/source/stemworks-logo.png" /></a></div>
+
+<h4 class="promo-title"><a href="https://lai.gwu.edu/stemworks" target="_blank">STEMworks</a></h4>
+</div>
+
+<div class="promo-items-item">
+<div class="promo-image"><a href="https://writingcenter.gwu.edu"><img alt="photo: Writing Center" src="/themes/lai/images/source/writing-center.png" /></a></div>
+
+<h4 class="promo-title"><a href="https://writingcenter.gwu.edu" target="_blank">Writing Center</a></h4>
+</div>
+</div>
+</div>
+
+<?php }

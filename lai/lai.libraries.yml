@@ -1,0 +1,26 @@
+global:
+  version: VERSION
+  css:
+    libsite:
+      css/libsite/bootstrap.css: {}
+      css/libsite/style.css: {}
+      css/libsite/tabs.css: {}      
+      css/libsite/node.css: {}
+      css/libsite/front.css: {}
+      css/libsite/topheader.css: {}	 
+      css/libsite/footer.css: {}
+      css/libsite/homepage.css: {}
+      css/libsite/header.css: {}
+#      css/libsite/primary_nav.css: {}
+      css/libsite/custom.css: {}
+      css/libsite/fellowships.css: {}
+      css/libsite/resources.css: {}
+  js:
+    js/build/bootstrap.js: {}
+    js/build/script.js: {}
+   # js/build/custom.js: {} #this one controls what happens when search is submitted
+    js/build/search_dropdown.js: {} #this one controls the search dropdown
+#    js/build/jquery-accessibleMegaMenu.js: {}
+    js/build/menu.js: {}
+  dependencies:
+    - core/jquery

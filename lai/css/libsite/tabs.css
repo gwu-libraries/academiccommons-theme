@@ -1,0 +1,30 @@
+@charset "utf-8";
+/*
+  Sitename: http://library.gwu.edu
+  Author: Aldridge 
+  drupal.css
+  Styles that typically impact the drupal administration appearance
+*/
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~ Drupal Specific ~ */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.tabs__tab {
+	overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    float: left;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+.tabs__tab a {
+}
+.tabs__tab a:hover {
+}
+
+.tabs__tab a:link, .tabs a:visited {
+}

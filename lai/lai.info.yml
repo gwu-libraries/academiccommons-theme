@@ -1,0 +1,31 @@
+name: LAI
+type: theme
+description: 'This is the base theme for LAI'
+package: Core
+# version: VERSION
+# core: 8.x
+
+libraries:
+  - core/normalize
+  - lai/global
+
+regions:
+  header: 'Header'
+  front_page_hero: 'Front Page Hero'
+  page_hero: 'Page Hero'
+  content: 'Content'
+  left_sidebar: 'Left Sidebar'
+  right_sidebar: 'Right Sidebar'
+  footer: 'Footer'
+
+# Information added by Drupal.org packaging script on 2017-10-15
+version: '8.x-1.3'
+core: '8.x'
+project: 'lai'
+datestamp: 1508096954
+
+stylesheets-remove:
+  - core/assets/vendor/normalize-css/normalize.css
+  - core/modules/system/css/system.module.css
+  - core/modules/system/css/system.theme.css
+  - core/modules/views/css/views.module.css

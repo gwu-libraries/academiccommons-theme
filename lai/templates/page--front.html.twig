@@ -1,0 +1,19 @@
+	  {% if page.header|render %}
+          {{ page.header }}
+      {% endif %}
+
+	   {% if page.front_page_hero|render %}
+	   		{{ page.front_page_hero }}
+		{% endif %}
+
+			<div id="main-content" class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						{{ page.content }}
+					</div>
+				</div>
+			</div>
+
+	  {% if page.footer|render %}
+          {{ page.footer }}
+      {% endif %}

@@ -1,0 +1,36 @@
+/* */
+.contextual {
+  display: none!important;
+}
+
+#library_hours{
+	position:absolute;
+	top:2px;
+	right:100px;
+}
+
+
+#emergency_alert-content{
+	width:100%;
+}
+
+
+.events-image img{
+	max-height:100px;
+	max-width:100px;
+	float:left;
+}
+
+div.status, div.messages {
+}
+#admin-menu li {
+  font-size: 100%;
+}
+#admin-menu img {
+  margin-bottom: 0px;
+}
+
+
+.container div {
+  display: block;
+}
