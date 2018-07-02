@@ -3,8 +3,75 @@
   flex-wrap: wrap;
   margin-right: -20px;
   > div {
-     width: calc(33% - 20px);
-     margin-right: 20px;
+    width: calc(33% - 20px);
+    margin-right: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .resource-photo {
+    position: absolute;
+    height: 180px;
+    width: 100%;
+    overflow: hidden;
+    top: 0;
+    img{ 
+      position: absolute;
+      margin: auto;
+      left: -100%;
+      right: -100%;
+      top: -100%;
+      bottom: -100%;
+    }
+  }
+  .resource-title {
+    background-image: linear-gradient(rgba(0,0,0,0) 0, rgba(0,0,0,.2) 50%, rgba(0,0,0,.8) 100%);
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    height: 180px;
+    width: 100%;
+    padding: .5em 2.5em .5em 1em;
+    box-sizing: border-box;
+    &:before, &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      transform: skew(-20deg);
+      width: 300px;
+      height: 100%;
+      top: 0;
+      right: calc(100% - 60px);
+      z-index: 2;
+    }
+    &:after {
+      right: auto;
+      left: calc(100% - 40px);
+    }
+  }
+  .resource-icon {
+    width: 30px;
+    margin-left: 2em;
+    img {
+      display: inline-block;
+      max-width: 30px;
+      max-height: 30px;
+    }
+  }
+  h2 {
+    font-size: 1.4em;
+    font-weight: normal;
+    margin: 0 0 0 .3em;
+    font-family: "AvenirLTStd-Roman",Helvetica,Arial,sans-serif;
+    z-index: 3;
+    position: relative;
+    a {
+      color: #fff;
+      font-family: "AvenirLTStd-Roman",Helvetica,Arial,sans-serif;
+    }
+  }
+  .resource-teaser {
+    margin: 1em 0;
   }
 }
 
@@ -18,11 +85,18 @@ $gwdarkblue: rgb(0,64,101);
 $gwcolors: rgb(227,25,55) rgb(255,200,46) rgb(122,193,67) rgb(0,131,103) rgb(0,150,214) rgb(0,64,101);
 @for $i from 1 through length($gwcolors) {
   .resource-weight-#{$i - 1} + div h1, 
-  [data-weight='#{$i - 1}'] .resource-title, 
-  [data-weight='#{$i - 1 + length($gwcolors)}'] .resource-title, 
-  [data-weight='#{$i - 1 + length($gwcolors) * 2}'] .resource-title, 
-  [data-weight='#{$i - 1 + length($gwcolors) * 3}'] .resource-title, 
+  [data-weight='#{$i - 1}'] .resource-title:before, 
+  [data-weight='#{$i - 1 + length($gwcolors)}'] .resource-title:before, 
+  [data-weight='#{$i - 1 + length($gwcolors) * 2}'] .resource-title:before, 
+  [data-weight='#{$i - 1 + length($gwcolors) * 3}'] .resource-title:before, 
   {
-    background-image: linear-gradient(to right, rgba(nth($gwcolors, $i),.8), rgba(nth($gwcolors, $i),.1));
+    background-image: linear-gradient(to top, rgba(nth($gwcolors, $i),.8), rgba(nth($gwcolors, $i),.1));
+  }
+  [data-weight='#{$i - 1}'] .resource-title:after, 
+  [data-weight='#{$i - 1 + length($gwcolors)}'] .resource-title:after, 
+  [data-weight='#{$i - 1 + length($gwcolors) * 2}'] .resource-title:after, 
+  [data-weight='#{$i - 1 + length($gwcolors) * 3}'] .resource-title:after, 
+  {
+    background-image: linear-gradient(to bottom, rgba(nth($gwcolors, $i),.8), rgba(nth($gwcolors, $i),.1));
   }
 }

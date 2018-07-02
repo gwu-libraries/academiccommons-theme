@@ -6,54 +6,163 @@
 .resources > div {
   width: calc(33% - 20px);
   margin-right: 20px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.resources .resource-photo {
+  position: absolute;
+  height: 180px;
+  width: 100%;
+  overflow: hidden;
+  top: 0;
+}
+.resources .resource-photo img {
+  position: absolute;
+  margin: auto;
+  left: -100%;
+  right: -100%;
+  top: -100%;
+  bottom: -100%;
+}
+.resources .resource-title {
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.8) 100%);
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  height: 180px;
+  width: 100%;
+  padding: 0.5em 2.5em 0.5em 1em;
+  box-sizing: border-box;
+}
+.resources .resource-title:before, .resources .resource-title:after {
+  content: "";
+  display: block;
+  position: absolute;
+  transform: skew(-20deg);
+  width: 300px;
+  height: 100%;
+  top: 0;
+  right: calc(100% - 60px);
+  z-index: 2;
+}
+.resources .resource-title:after {
+  right: auto;
+  left: calc(100% - 40px);
+}
+.resources .resource-icon {
+  width: 30px;
+  margin-left: 2em;
+}
+.resources .resource-icon img {
+  display: inline-block;
+  max-width: 30px;
+  max-height: 30px;
+}
+.resources h2 {
+  font-size: 1.4em;
+  font-weight: normal;
+  margin: 0 0 0 0.3em;
+  font-family: "AvenirLTStd-Roman", Helvetica, Arial, sans-serif;
+  z-index: 3;
+  position: relative;
+}
+.resources h2 a {
+  color: #fff;
+  font-family: "AvenirLTStd-Roman", Helvetica, Arial, sans-serif;
+}
+.resources .resource-teaser {
+  margin: 1em 0;
 }
 
 .resource-weight-0 + div h1,
-[data-weight="0"] .resource-title,
-[data-weight="6"] .resource-title,
-[data-weight="12"] .resource-title,
-[data-weight="18"] .resource-title {
-  background-image: linear-gradient(to right, rgba(227, 25, 55, 0.8), rgba(227, 25, 55, 0.1));
+[data-weight="0"] .resource-title:before,
+[data-weight="6"] .resource-title:before,
+[data-weight="12"] .resource-title:before,
+[data-weight="18"] .resource-title:before {
+  background-image: linear-gradient(to top, rgba(227, 25, 55, 0.8), rgba(227, 25, 55, 0.1));
+}
+
+[data-weight="0"] .resource-title:after,
+[data-weight="6"] .resource-title:after,
+[data-weight="12"] .resource-title:after,
+[data-weight="18"] .resource-title:after {
+  background-image: linear-gradient(to bottom, rgba(227, 25, 55, 0.8), rgba(227, 25, 55, 0.1));
 }
 
 .resource-weight-1 + div h1,
-[data-weight="1"] .resource-title,
-[data-weight="7"] .resource-title,
-[data-weight="13"] .resource-title,
-[data-weight="19"] .resource-title {
-  background-image: linear-gradient(to right, rgba(255, 200, 46, 0.8), rgba(255, 200, 46, 0.1));
+[data-weight="1"] .resource-title:before,
+[data-weight="7"] .resource-title:before,
+[data-weight="13"] .resource-title:before,
+[data-weight="19"] .resource-title:before {
+  background-image: linear-gradient(to top, rgba(255, 200, 46, 0.8), rgba(255, 200, 46, 0.1));
+}
+
+[data-weight="1"] .resource-title:after,
+[data-weight="7"] .resource-title:after,
+[data-weight="13"] .resource-title:after,
+[data-weight="19"] .resource-title:after {
+  background-image: linear-gradient(to bottom, rgba(255, 200, 46, 0.8), rgba(255, 200, 46, 0.1));
 }
 
 .resource-weight-2 + div h1,
-[data-weight="2"] .resource-title,
-[data-weight="8"] .resource-title,
-[data-weight="14"] .resource-title,
-[data-weight="20"] .resource-title {
-  background-image: linear-gradient(to right, rgba(122, 193, 67, 0.8), rgba(122, 193, 67, 0.1));
+[data-weight="2"] .resource-title:before,
+[data-weight="8"] .resource-title:before,
+[data-weight="14"] .resource-title:before,
+[data-weight="20"] .resource-title:before {
+  background-image: linear-gradient(to top, rgba(122, 193, 67, 0.8), rgba(122, 193, 67, 0.1));
+}
+
+[data-weight="2"] .resource-title:after,
+[data-weight="8"] .resource-title:after,
+[data-weight="14"] .resource-title:after,
+[data-weight="20"] .resource-title:after {
+  background-image: linear-gradient(to bottom, rgba(122, 193, 67, 0.8), rgba(122, 193, 67, 0.1));
 }
 
 .resource-weight-3 + div h1,
-[data-weight="3"] .resource-title,
-[data-weight="9"] .resource-title,
-[data-weight="15"] .resource-title,
-[data-weight="21"] .resource-title {
-  background-image: linear-gradient(to right, rgba(0, 131, 103, 0.8), rgba(0, 131, 103, 0.1));
+[data-weight="3"] .resource-title:before,
+[data-weight="9"] .resource-title:before,
+[data-weight="15"] .resource-title:before,
+[data-weight="21"] .resource-title:before {
+  background-image: linear-gradient(to top, rgba(0, 131, 103, 0.8), rgba(0, 131, 103, 0.1));
+}
+
+[data-weight="3"] .resource-title:after,
+[data-weight="9"] .resource-title:after,
+[data-weight="15"] .resource-title:after,
+[data-weight="21"] .resource-title:after {
+  background-image: linear-gradient(to bottom, rgba(0, 131, 103, 0.8), rgba(0, 131, 103, 0.1));
 }
 
 .resource-weight-4 + div h1,
-[data-weight="4"] .resource-title,
-[data-weight="10"] .resource-title,
-[data-weight="16"] .resource-title,
-[data-weight="22"] .resource-title {
-  background-image: linear-gradient(to right, rgba(0, 150, 214, 0.8), rgba(0, 150, 214, 0.1));
+[data-weight="4"] .resource-title:before,
+[data-weight="10"] .resource-title:before,
+[data-weight="16"] .resource-title:before,
+[data-weight="22"] .resource-title:before {
+  background-image: linear-gradient(to top, rgba(0, 150, 214, 0.8), rgba(0, 150, 214, 0.1));
+}
+
+[data-weight="4"] .resource-title:after,
+[data-weight="10"] .resource-title:after,
+[data-weight="16"] .resource-title:after,
+[data-weight="22"] .resource-title:after {
+  background-image: linear-gradient(to bottom, rgba(0, 150, 214, 0.8), rgba(0, 150, 214, 0.1));
 }
 
 .resource-weight-5 + div h1,
-[data-weight="5"] .resource-title,
-[data-weight="11"] .resource-title,
-[data-weight="17"] .resource-title,
-[data-weight="23"] .resource-title {
-  background-image: linear-gradient(to right, rgba(0, 64, 101, 0.8), rgba(0, 64, 101, 0.1));
+[data-weight="5"] .resource-title:before,
+[data-weight="11"] .resource-title:before,
+[data-weight="17"] .resource-title:before,
+[data-weight="23"] .resource-title:before {
+  background-image: linear-gradient(to top, rgba(0, 64, 101, 0.8), rgba(0, 64, 101, 0.1));
+}
+
+[data-weight="5"] .resource-title:after,
+[data-weight="11"] .resource-title:after,
+[data-weight="17"] .resource-title:after,
+[data-weight="23"] .resource-title:after {
+  background-image: linear-gradient(to bottom, rgba(0, 64, 101, 0.8), rgba(0, 64, 101, 0.1));
 }
 
 /*# sourceMappingURL=resources.css.map */
