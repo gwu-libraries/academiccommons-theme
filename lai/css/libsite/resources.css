@@ -8,6 +8,8 @@
   margin-right: 20px;
   position: relative;
   overflow: hidden;
+}
+.resources .resource-bucket {
   cursor: pointer;
 }
 .resources .resource-photo {
@@ -70,6 +72,9 @@
 .resources h2 a {
   color: #fff;
   font-family: "AvenirLTStd-Roman", Helvetica, Arial, sans-serif;
+}
+.resources h2 a:hover {
+  text-decoration: none;
 }
 .resources .resource-teaser {
   margin: 1em 0;
