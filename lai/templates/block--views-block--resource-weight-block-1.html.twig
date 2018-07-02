@@ -1,0 +1,11 @@
+{#
+  This template overrides what would have been done for the "Resource Weight" block.
+  It instead outputs a div with a class that the CSS can use in a "div.resource-weight-N + div h1" style selector,
+  where N is the remainder of the resource's weight divided by 6 (the number of GW colors we're using).
+  This is to style the the headers in GW colors to match their colors on the homepage.
+#}
+{% set viewcontent %}
+  {{ content }}
+{% endset %}
+<div class="resource-weight-{{ viewcontent | striptags | trim % 6 }}">
+</div>
