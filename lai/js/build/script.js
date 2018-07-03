@@ -54,9 +54,10 @@
 
     jQuery(".resource-bucket a").attr("tabindex","-1");
     jQuery("#main-content").on("click keypress", ".resource-bucket", function(e) {
-      if (e.type == "click" || (e.type == "keypress" && e.which == 13)) {
+      if (e.type == "click" || (e.type == "keypress" && (e.which == 13 || e.which == 10))) {
         var link = jQuery(this).find("h2 a")[0].href;
-        window.location.href = link;
+        var windowName = e.ctrlKey == true ? "_blank" : "_self";
+        window.open(link, windowName);
       }
     });
 
