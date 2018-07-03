@@ -61,7 +61,8 @@
     sidebar_second ? 'sidebar-second',
     (sidebar_first and not sidebar_second) or (sidebar_second and not sidebar_first) ? 'one-sidebar',
     (sidebar_first and sidebar_second) ? 'two-sidebars',
-    (not sidebar_first and not sidebar_second) ? 'no-sidebar'
+    (not sidebar_first and not sidebar_second) ? 'no-sidebar',
+    node_type ? node_type
   ) }}>
     <div id="skip">
       <p>

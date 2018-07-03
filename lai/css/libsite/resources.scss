@@ -80,16 +80,48 @@
   }
 }
 
-$gwred: rgb(227,25,55);
-$gwyellow: rgb(255,200,46);
-$gwlightgreen: rgb(122,193,67);
-$gwdarkgreen: rgb(0,131,103);
-$gwlightblue: rgb(0,150,214);
-$gwdarkblue: rgb(0,64,101);
+.resource #block-lai-page-title {
+  position: relative;
+  box-sizing: border-box;
+  margin: .5em 0 1em;
+  padding-bottom: 1em;
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -25px;
+    width: calc(100% + 50px);
+    height: 100%;
+    transform: skew(-20deg);
+  }
+  h1 {
+    padding: .3em .5em .4em 0;
+    margin-bottom: .5em;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    display: table-cell;
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: -25px;
+      width: calc(100% + 50px);
+      height: 100%;
+      transform: skew(-20deg);
+      background-color: #fff;
+      z-index: -1;
+    }
+  }
+}
 
 $gwcolors: rgb(227,25,55) rgb(255,200,46) rgb(122,193,67) rgb(0,131,103) rgb(0,150,214) rgb(0,64,101);
 @for $i from 1 through length($gwcolors) {
-  .resource-weight-#{$i - 1} + div h1, 
+  .resource-weight-#{$i - 1} + #block-lai-page-title:after {
+    background-image: linear-gradient(-45deg, rgba(nth($gwcolors, $i),1), rgba(nth($gwcolors, $i),.1));
+  }
   [data-weight='#{$i - 1}'] .resource-title:before, 
   [data-weight='#{$i - 1 + length($gwcolors)}'] .resource-title:before, 
   [data-weight='#{$i - 1 + length($gwcolors) * 2}'] .resource-title:before, 
@@ -103,5 +135,23 @@ $gwcolors: rgb(227,25,55) rgb(255,200,46) rgb(122,193,67) rgb(0,131,103) rgb(0,1
   [data-weight='#{$i - 1 + length($gwcolors) * 3}'] .resource-title:after, 
   {
     background-image: linear-gradient(to bottom, rgba(nth($gwcolors, $i),.8), rgba(nth($gwcolors, $i),.1));
+  }
+}
+
+/* Overriding something in ... editorial/overrides.css (??) */
+.block-views {
+  margin: 0;
+}
+
+.resource-icon-block { /* .resource-icon-block refers to class added in the 'Resouce Icon' View */
+  float: right;
+  margin-right: 1em;
+  margin-top: 1.5em;
+  margin-left: 5em;
+  position: relative;
+  z-index: 3;
+  svg {
+    max-width: 50px;
+    max-height: 50px;
   }
 }
