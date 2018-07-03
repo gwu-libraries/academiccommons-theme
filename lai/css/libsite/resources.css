@@ -97,7 +97,7 @@
   transform: skew(-20deg);
 }
 .resource #block-lai-page-title h1 {
-  padding: 0.3em 0.5em 0.4em 0;
+  padding: 0.3em 0.3em 0.4em;
   margin-bottom: 0.5em;
   position: relative;
   z-index: 2;
@@ -109,16 +109,22 @@
   display: block;
   position: absolute;
   top: 0;
-  left: -25px;
+  left: -22px;
   width: calc(100% + 50px);
   height: 100%;
   transform: skew(-20deg);
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-style: solid;
+  border-width: 1px 0 0 1px;
   z-index: -1;
 }
 
 .resource-weight-0 + #block-lai-page-title:after {
   background-image: linear-gradient(-45deg, #e31937, rgba(227, 25, 55, 0.1));
+}
+
+.resource-weight-0 + #block-lai-page-title h1:before {
+  border-color: rgba(227, 25, 55, 0.2);
 }
 
 [data-weight="0"] .resource-title:before,
@@ -139,6 +145,10 @@
   background-image: linear-gradient(-45deg, #ffc82e, rgba(255, 200, 46, 0.1));
 }
 
+.resource-weight-1 + #block-lai-page-title h1:before {
+  border-color: rgba(255, 200, 46, 0.2);
+}
+
 [data-weight="1"] .resource-title:before,
 [data-weight="7"] .resource-title:before,
 [data-weight="13"] .resource-title:before,
@@ -155,6 +165,10 @@
 
 .resource-weight-2 + #block-lai-page-title:after {
   background-image: linear-gradient(-45deg, #7ac143, rgba(122, 193, 67, 0.1));
+}
+
+.resource-weight-2 + #block-lai-page-title h1:before {
+  border-color: rgba(122, 193, 67, 0.2);
 }
 
 [data-weight="2"] .resource-title:before,
@@ -175,6 +189,10 @@
   background-image: linear-gradient(-45deg, #008367, rgba(0, 131, 103, 0.1));
 }
 
+.resource-weight-3 + #block-lai-page-title h1:before {
+  border-color: rgba(0, 131, 103, 0.2);
+}
+
 [data-weight="3"] .resource-title:before,
 [data-weight="9"] .resource-title:before,
 [data-weight="15"] .resource-title:before,
@@ -193,6 +211,10 @@
   background-image: linear-gradient(-45deg, #0096d6, rgba(0, 150, 214, 0.1));
 }
 
+.resource-weight-4 + #block-lai-page-title h1:before {
+  border-color: rgba(0, 150, 214, 0.2);
+}
+
 [data-weight="4"] .resource-title:before,
 [data-weight="10"] .resource-title:before,
 [data-weight="16"] .resource-title:before,
@@ -209,6 +231,10 @@
 
 .resource-weight-5 + #block-lai-page-title:after {
   background-image: linear-gradient(-45deg, #004065, rgba(0, 64, 101, 0.1));
+}
+
+.resource-weight-5 + #block-lai-page-title h1:before {
+  border-color: rgba(0, 64, 101, 0.2);
 }
 
 [data-weight="5"] .resource-title:before,
