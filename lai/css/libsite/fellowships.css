@@ -44,4 +44,143 @@
   display: block;
 }
 
+.find-fellowships {
+  /* Class name based on CSS class applied in the 'Fellowships Searching' View) */
+}
+.find-fellowships form {
+  display: flex;
+  flex-wrap: wrap;
+}
+.find-fellowships form fieldset {
+  border: 1px solid #ccc;
+  position: relative;
+  margin-right: 15px;
+  background-color: #f9f9f9;
+}
+.find-fellowships form fieldset legend {
+  margin: 0;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  cursor: pointer;
+  float: left;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  border-bottom: 1px solid #f9f9f9;
+  background-color: #f9f9f9;
+}
+.find-fellowships form fieldset legend:after {
+  content: "...";
+  padding-left: 0.5em;
+}
+.find-fellowships form fieldset .fieldset-wrapper {
+  padding: 1em;
+  border: 1px solid #ccc;
+  position: absolute;
+  left: -1px;
+  top: calc(100% - 1px);
+  background-color: #f9f9f9;
+  min-width: 300px;
+  display: none;
+}
+.find-fellowships form fieldset:hover, .find-fellowships form fieldset:focus, .find-fellowships form fieldset.focused-child {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.find-fellowships form fieldset:hover legend, .find-fellowships form fieldset:focus legend, .find-fellowships form fieldset.focused-child legend {
+  z-index: 4;
+}
+.find-fellowships form fieldset:hover .fieldset-wrapper, .find-fellowships form fieldset:focus .fieldset-wrapper, .find-fellowships form fieldset.focused-child .fieldset-wrapper {
+  display: block;
+  z-index: 3;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.find-fellowships form fieldset:last-of-type .fieldset-wrapper {
+  left: auto;
+  right: -1px;
+}
+.find-fellowships form > div.form-item, .find-fellowships form > div.form-actions {
+  float: left;
+  width: 50%;
+  margin-top: 1em;
+}
+.find-fellowships form > div.form-item:last-child:after, .find-fellowships form > div.form-actions:last-child:after {
+  content: "";
+  display: block;
+  clear: left;
+}
+
+.find-fellowships .fieldset-wrapper .form-item {
+  padding-left: calc(30px + .5em);
+  /* :not(:hover) here to avoid the weirdness of getting the outline when clicking instead of tabbing (though realizing it will be there as soon as hovered away from) */
+}
+.find-fellowships .fieldset-wrapper .form-item input {
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  position: absolute;
+  left: -10000px;
+  top: auto;
+}
+.find-fellowships .fieldset-wrapper .form-item label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  margin-left: calc(-30px - .5em);
+  padding-left: calc(30px + .5em);
+}
+.find-fellowships .fieldset-wrapper .form-item label:before {
+  content: "";
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  background-color: #ccc;
+  border-radius: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 0.2s;
+}
+.intersection.find-fellowships .fieldset-wrapper .form-item label:before {
+  border-radius: 0;
+  width: 20px;
+}
+
+.find-fellowships .fieldset-wrapper .form-item label:after {
+  content: "";
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: all 0.2s;
+}
+.intersection.find-fellowships .fieldset-wrapper .form-item label:after {
+  border-radius: 0;
+}
+
+.find-fellowships .fieldset-wrapper .form-item input:checked + label:before {
+  background-color: #0073aa;
+  transition: all 0.2s;
+}
+.find-fellowships .fieldset-wrapper .form-item input:checked + label:after {
+  left: 12px;
+  transition: all 0.2s;
+}
+.intersection.find-fellowships .fieldset-wrapper .form-item input:checked + label:after {
+  left: 6px;
+  border: 0 solid #fff;
+  border-width: 0 3px 3px 0;
+  width: 8px;
+  height: 12px;
+  transform: rotate(45deg);
+  background-color: transparent;
+}
+
+.find-fellowships .fieldset-wrapper .form-item input:focus + label:not(:hover) {
+  outline: 1px dotted;
+}
+
 /*# sourceMappingURL=fellowships.css.map */

@@ -1,3 +1,13 @@
+$gwlightblue: #0073aa;
+@mixin hidden-visually {
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  position: absolute;
+  left: -10000px;
+  top: auto;
+}
+
 .fellowship-details {
   width: 100%;
   margin: 0 0 1em;
@@ -41,4 +51,140 @@
 
 .container .content div {
     display: block;
+}
+
+.find-fellowships { /* Class name based on CSS class applied in the 'Fellowships Searching' View) */
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    fieldset {
+      border: 1px solid #ccc;
+      position: relative;
+      margin-right: 15px;
+      background-color: #f9f9f9;
+      legend {
+        margin: 0;
+        padding: .5em 1em;
+        font-size: 1em;
+        cursor: pointer;
+        float: left;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        border-bottom: 1px solid #f9f9f9;
+        background-color: #f9f9f9;
+        &:after {
+          content: "...";
+          padding-left: .5em;
+        }
+      }
+      .fieldset-wrapper {
+	padding: 1em;
+        border: 1px solid #ccc;
+        position: absolute;
+        left: -1px;
+        top: calc(100% - 1px);
+        background-color: #f9f9f9;
+        min-width: 300px;
+        display: none;
+      }
+      &:hover, &:focus, &.focused-child {
+        box-shadow: 0 0 5px rgba(0,0,0,.2);
+        legend {
+          z-index: 4;
+        }
+        .fieldset-wrapper {
+          display: block;
+          z-index: 3;
+          box-shadow: 0 0 5px rgba(0,0,0,.2);
+        }
+      }
+      &:last-of-type .fieldset-wrapper {
+        left: auto;
+        right: -1px;
+      }
+    }
+    & > div.form-item, & > div.form-actions {
+      float: left;
+      width: 50%;
+      margin-top: 1em;
+      &:last-child:after {
+        content: "";
+        display: block;
+        clear: left;
+      }
+    }
+  }
+}
+
+.find-fellowships .fieldset-wrapper .form-item {
+  $inputSize: 20;
+  padding-left: calc(#{$inputSize * 1.5}px + .5em);
+  input {
+    @include hidden-visually;
+  }
+  label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    margin-left: calc(-#{$inputSize * 1.5}px - .5em);
+    padding-left: calc(#{$inputSize * 1.5}px + .5em);
+    &:before {
+      content: "";
+      display: inline-block;
+      height: #{$inputSize}px;
+      width: #{$inputSize * 1.5}px;
+      background-color: #ccc;
+      border-radius: #{$inputSize / 2}px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: all .2s;
+      $uptohere: &;
+      @at-root .intersection#{$uptohere} {
+        border-radius: 0;
+        width: #{$inputSize}px;
+      }
+    }
+    &:after {
+      content: "";
+      display: inline-block;
+      height: #{$inputSize - 4}px;
+      width: #{$inputSize - 4}px;
+      background-color: #fff;
+      border-radius: #{($inputSize - 4) / 2}px;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: all .2s;
+      $uptohere: &;
+      @at-root .intersection#{$uptohere} {
+        border-radius: 0;
+      }
+    }
+  }
+  input:checked + label {
+    &:before {
+      background-color: $gwlightblue;
+      transition: all .2s;
+    }
+    &:after {
+      left: #{$inputSize * .5 + 2}px;
+      transition: all .2s;
+      $uptohere: &;
+      @at-root .intersection#{$uptohere} {
+        left: 6px;
+        border: 0 solid #fff;
+        border-width: 0 3px 3px 0;
+        width: #{$inputSize * .4}px;
+        height: #{$inputSize * .6}px;
+        transform: rotate(45deg);
+        background-color: transparent;
+      }
+    }
+  }
+  /* :not(:hover) here to avoid the weirdness of getting the outline when clicking instead of tabbing (though realizing it will be there as soon as hovered away from) */
+  input:focus + label:not(:hover) {
+    outline: 1px dotted;
+  }
 }

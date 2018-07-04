@@ -24,3 +24,10 @@ global:
     js/build/menu.js: {}
   dependencies:
     - core/jquery
+
+exposedfiltersoverrides:
+  version: VERSION
+  js:
+    js/build/exposed-filters-overrides.js: {}
+  dependencies:
+    - core/jquery

@@ -20,6 +20,12 @@ function lai_preprocess_block(&$variables) {
   }
 }
 
+function lai_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+  if ($form['#id'] == 'views-exposed-form-fellowships-searching-block-1') {
+    $form['#attached']['library'][] = 'lai/exposedfiltersoverrides';
+  }
+}
+
 use Drupal\Core\Cache\CacheableMetadata;
 
 /**
