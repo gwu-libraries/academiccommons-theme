@@ -1,0 +1,95 @@
+@import url("gweverything.css");
+@import url("nice_menus.css");
+@import url("gwu-proto-nice-menu.css");
+
+// ========== Global Mixins & Variables
+@import "../libsite/utilities";
+
+
+/* =========== GW Page Layout =========== */
+
+#skip-link {
+  z-index: 3;
+  position: relative;
+}
+
+/* =========== GW Header =========== */
+
+$headerHeight: 132;
+$headerImgHeight: 90;
+
+#header #header-wrapper, #header #header-wrapper .gwlogo {
+
+  display: none;
+
+  img {
+    width: auto;
+  }
+
+  @include mediaMin(600px) {
+    display: block;
+    position: relative;
+    height: #{$headerHeight * .5}px;
+    img {
+      height: #{$headerImgHeight * .5}px;
+    }
+  }
+  @include mediaMin(750px) {
+    height: #{$headerHeight * .75}px;
+    img {
+      height: #{$headerImgHeight * .75}px;
+    }
+  }
+  @include mediaMin(900px) {
+    height: #{$headerHeight}px;
+    img {
+      height: #{$headerImgHeight}px;
+    }
+  }
+
+  & > a {
+    display: inline-block;
+    line-height: 1%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  #division-of {
+
+    display: none;
+
+    @include mediaMin(900px) {
+      display: block;
+      position: absolute;
+      left: 125px;
+      bottom: 1em;
+      white-space: nowrap;
+    }
+
+  }
+
+}
+
+/* =========== GW Nav Bar =========== */
+
+.mean-nav ul.nice-menu li::before {
+  display: none;
+}
+
+#navigation-mobile, #nav-bar.sticky {
+  position: fixed;
+}
+
+/* =========== GW Buttons ========== */
+
+button, html input[type="reset"], input[type="submit"]:hover {
+  border-color: initial !important;
+  background: initial !important;
+  color: inherit !important;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  padding: initial;
+  margin: initial;
+}

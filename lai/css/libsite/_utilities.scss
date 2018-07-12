@@ -1,0 +1,22 @@
+// ========== Global Mixins & Variables
+
+@mixin hidden-visually {
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  position: absolute;
+  left: -10000px;
+  top: auto;
+}
+@mixin mediaMin($breakpoint1,$breakpoint2:null) {
+  @media screen and (min-width: $breakpoint1) {
+    @content;
+  }
+  @if $breakpoint2 {
+    @media screen and (min-width: $breakpoint2) {
+      @content;
+    }
+  }
+}
+$gwlightblue: #0073aa;
+$gwdarkblue: #004065;

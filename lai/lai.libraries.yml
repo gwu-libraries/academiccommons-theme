@@ -3,7 +3,7 @@ global:
   css:
     libsite:
       css/libsite/bootstrap.css: {}
-      css/libsite/style.css: {}
+      css/gw_editorial/gwoverrides.css: {} # Pulls in other GW-related CSS via @imports
       css/libsite/custom.css: {}
       css/libsite/tabs.css: {}
       css/libsite/fellowships.css: {}
