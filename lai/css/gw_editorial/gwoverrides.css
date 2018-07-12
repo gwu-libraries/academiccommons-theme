@@ -70,15 +70,8 @@
 }
 
 /* =========== GW Buttons ========== */
-button, html input[type=reset], input[type=submit]:hover {
-  border-color: initial !important;
-  background: initial !important;
-  color: inherit !important;
-}
-
 button, html input[type=button], input[type=reset], input[type=submit] {
-  padding: initial;
-  margin: initial;
+  margin: 0;
 }
 
 /*# sourceMappingURL=gwoverrides.css.map */
