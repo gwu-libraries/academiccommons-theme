@@ -41,7 +41,7 @@
       {% set niceclasses = ['nice-menu','nice-menu-down','nice-menu-menu-division-menu','nice-menus-processed'] %}
       <ul{{ attributes.addClass(niceclasses).setAttribute('id','nice-menu-2') }}>
     {% else %}
-      <ul style="display: none;">
+      <ul>
     {% endif %}
     {% for item in items %}
       {%
