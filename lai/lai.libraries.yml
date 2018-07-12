@@ -6,8 +6,8 @@ global:
       css/gw_editorial/gwoverrides.css: {} # Pulls in other GW-related CSS via @imports
       css/libsite/custom.css: {}
       css/libsite/tabs.css: {}
-      css/libsite/fellowships.css: {}
-      css/libsite/resources.css: {}
+      css/academic_commons/fellowships.css: {}
+      css/academic_commons/resources.css: {}
   js:
     js/build/bootstrap.js: {}
   dependencies:
