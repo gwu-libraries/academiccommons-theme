@@ -89,15 +89,15 @@ ul.nice-menu .menu__link {
   -webkit-font-smoothing: subpixel-antialiased;
   font-size: 1rem;
   padding: 0 0.75rem;
-  cursor: default;
   &:focus {
     outline-offset: -2px;
     & + ul {
       visibility: visible;
     }
   }
-  &:focus + ul {
-  }
+}
+span.menu__link {
+  cursor: default;
 }
 
 /* =========== GW Buttons ========== */

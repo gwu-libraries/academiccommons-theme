@@ -77,7 +77,6 @@ ul.nice-menu .menu__link {
   -webkit-font-smoothing: subpixel-antialiased;
   font-size: 1rem;
   padding: 0 0.75rem;
-  cursor: default;
 }
 ul.nice-menu .menu__link:focus {
   outline-offset: -2px;
@@ -85,6 +84,11 @@ ul.nice-menu .menu__link:focus {
 ul.nice-menu .menu__link:focus + ul {
   visibility: visible;
 }
+
+span.menu__link {
+  cursor: default;
+}
+
 /* =========== GW Buttons ========== */
 button, html input[type=button], input[type=reset], input[type=submit] {
   margin: 0;
