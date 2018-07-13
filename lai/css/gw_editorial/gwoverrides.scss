@@ -81,8 +81,23 @@ $headerImgHeight: 90;
   position: fixed;
 }
 
-ul.nice-menu li:focus ul, ul.nice-menu li a:focus + ul {
-  visibility: visible;
+ul.nice-menu .menu__link {
+  color: #fefefe;
+  text-decoration: none;
+  display: inline-block;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-size: 1rem;
+  padding: 0 0.75rem;
+  cursor: default;
+  &:focus {
+    outline-offset: -2px;
+    & + ul {
+      visibility: visible;
+    }
+  }
+  &:focus + ul {
+  }
 }
 
 /* =========== GW Buttons ========== */

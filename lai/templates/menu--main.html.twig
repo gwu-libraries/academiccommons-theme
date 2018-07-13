@@ -54,9 +54,11 @@
           loop.last ? 'last',
         ]
       %}
-      {% set non_link_tabindex = item.url|render == "" ? create_attribute({"tabindex":"0"}) %}
-      <li{{ item.attributes.addClass(classes) }}{{ non_link_tabindex }}>
-        {{ link(item.title, item.url, {'class': ['menu__link']}) }}
+      <li{{ item.attributes.addClass(classes) }}>
+        {% set link_attributes = {'class':'menu__link'} %}
+        {% set non_link_tabindex = item.url|render == "" ? {"tabindex":"0"} : {} %}
+        {% set link_attributes = link_attributes | merge(non_link_tabindex) %}
+        {{ link(item.title, item.url, link_attributes) }}
         {% if item.below %}
           {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
         {% endif %}
