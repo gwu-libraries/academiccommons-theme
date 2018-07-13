@@ -69,6 +69,10 @@
   position: fixed;
 }
 
+ul.nice-menu li:focus ul, ul.nice-menu li a:focus + ul {
+  visibility: visible;
+}
+
 /* =========== GW Buttons ========== */
 button, html input[type=button], input[type=reset], input[type=submit] {
   margin: 0;

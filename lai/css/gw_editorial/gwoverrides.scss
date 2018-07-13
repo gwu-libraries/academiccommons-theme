@@ -81,7 +81,9 @@ $headerImgHeight: 90;
   position: fixed;
 }
 
-
+ul.nice-menu li:focus ul, ul.nice-menu li a:focus + ul {
+  visibility: visible;
+}
 
 /* =========== GW Buttons ========== */
 

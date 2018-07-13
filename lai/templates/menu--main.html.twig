@@ -50,15 +50,12 @@
           item.is_expanded ? 'menu-item--expanded',
           item.is_collapsed ? 'menu-item--collapsed',
           item.in_active_trail ? 'menu-item--active-trail',
+          loop.first ? 'first',
+          loop.last ? 'last',
         ]
       %}
-      {% if loop.first %}
-        <li{{ item.attributes.addClass(classes).addClass('first') }}>
-      {% elseif loop.last %}
-        <li{{ item.attributes.addClass(classes).addClass('last') }}>
-      {% else %}
-        <li{{ item.attributes.addClass(classes) }}>
-      {% endif %}
+      {% set non_link_tabindex = item.url|render == "" ? create_attribute({"tabindex":"0"}) %}
+      <li{{ item.attributes.addClass(classes) }}{{ non_link_tabindex }}>
         {{ link(item.title, item.url, {'class': ['menu__link']}) }}
         {% if item.below %}
           {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
