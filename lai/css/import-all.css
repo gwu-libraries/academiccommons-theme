@@ -1,0 +1,6 @@
+/* Created as a way to better share styling with CKEditor */
+@import url("gw_editorial/gwoverrides.css"); /* which itself imports other CSS files */
+@import url("libsite/custom.css");
+@import url("libsite/tabs.css");
+@import url("academic_commons/fellowships.css");
+@import url("academic_commons/resources.css");

@@ -1,13 +1,10 @@
 global:
   version: VERSION
   css:
-    libsite:
+    layout:
       css/libsite/bootstrap.css: {}
-      css/gw_editorial/gwoverrides.css: {} # Pulls in other GW-related CSS via @imports
-      css/libsite/custom.css: {}
-      css/libsite/tabs.css: {}
-      css/academic_commons/fellowships.css: {}
-      css/academic_commons/resources.css: {}
+    theme:
+      css/import-all.css: {} # Imports various stylesheets instead of enumerating them here, for better sharing with CKEditor
   js:
     js/build/bootstrap.js: {}
     js/build/sticky-nav.js: {}
