@@ -10,6 +10,7 @@ global:
       css/academic_commons/resources.css: {}
   js:
     js/build/bootstrap.js: {}
+    js/build/sticky-nav.js: {}
     js/build/resources.js: {}
   dependencies:
     - core/jquery

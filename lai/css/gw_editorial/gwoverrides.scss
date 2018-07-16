@@ -79,6 +79,7 @@ $headerImgHeight: 90;
 
 #navigation-mobile, #nav-bar.sticky {
   position: fixed;
+  z-index: 10;
 }
 
 ul.nice-menu .menu__link {
