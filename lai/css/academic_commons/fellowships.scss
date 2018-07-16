@@ -1,12 +1,5 @@
-$gwlightblue: #0073aa;
-@mixin hidden-visually {
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  position: absolute;
-  left: -10000px;
-  top: auto;
-}
+// ========== Global Mixins & Variables
+@import "../utilities";
 
 .fellowship-details {
   width: 100%;
