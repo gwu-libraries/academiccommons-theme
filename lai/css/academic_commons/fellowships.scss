@@ -51,10 +51,13 @@
   CSS for the areas dedicated to filtering and searching fellowships
 */
 .find-fellowships { /* Class name based on CSS class applied in the 'Fellowships Searching' View block) */
+  margin-top: 2em;
   form {
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
     fieldset {
+      order: 5;
       border: 1px solid #ccc;
       position: relative;
       margin-right: 15px;
@@ -71,7 +74,7 @@
         background-color: #f9f9f9;
         &:after {
           content: "...";
-          padding-left: .5em;
+          padding-left: .25em;
         }
       }
       &.checked-children legend:after {
@@ -105,20 +108,26 @@
           box-shadow: 0 0 5px rgba(0,0,0,.2);
         }
       }
-      &:last-of-type .fieldset-wrapper {
-        left: auto;
-        right: -1px;
-      }
     }
-    & > div.form-item, & > div.form-actions {
-      float: left;
-      width: 50%;
-      margin-top: 1em;
-      &:last-child:after {
-        content: "";
-        display: block;
-        clear: left;
-      }
+    & > .js-form-type-textfield { /* Search box */
+      order: 1;
+      white-space: nowrap;
+      margin-right: 1em;
+      margin-bottom: 1em;
+    }
+    & .form-actions { /* Search submit button */
+      order: 2;
+      flex: 1;
+      margin-bottom: 1em;
+    }
+    & > .js-form-type-select { /* Sort dropdown */
+      order: 3;
+      margin-left: auto;
+    }
+    &:before {
+      content: '';
+      width: 100%;
+      order: 4;
     }
   }
 }

@@ -49,12 +49,15 @@
 */
 .find-fellowships {
   /* Class name based on CSS class applied in the 'Fellowships Searching' View block) */
+  margin-top: 2em;
 }
 .find-fellowships form {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 .find-fellowships form fieldset {
+  order: 5;
   border: 1px solid #ccc;
   position: relative;
   margin-right: 15px;
@@ -73,7 +76,7 @@
 }
 .find-fellowships form fieldset legend:after {
   content: "...";
-  padding-left: 0.5em;
+  padding-left: 0.25em;
 }
 .find-fellowships form fieldset.checked-children legend:after {
   content: "(" attr(data-checked-children-quantity) ")";
@@ -106,19 +109,28 @@
   z-index: 3;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
-.find-fellowships form fieldset:last-of-type .fieldset-wrapper {
-  left: auto;
-  right: -1px;
+.find-fellowships form > .js-form-type-textfield {
+  /* Search box */
+  order: 1;
+  white-space: nowrap;
+  margin-right: 1em;
+  margin-bottom: 1em;
 }
-.find-fellowships form > div.form-item, .find-fellowships form > div.form-actions {
-  float: left;
-  width: 50%;
-  margin-top: 1em;
+.find-fellowships form .form-actions {
+  /* Search submit button */
+  order: 2;
+  flex: 1;
+  margin-bottom: 1em;
 }
-.find-fellowships form > div.form-item:last-child:after, .find-fellowships form > div.form-actions:last-child:after {
+.find-fellowships form > .js-form-type-select {
+  /* Sort dropdown */
+  order: 3;
+  margin-left: auto;
+}
+.find-fellowships form:before {
   content: "";
-  display: block;
-  clear: left;
+  width: 100%;
+  order: 4;
 }
 
 .find-fellowships .fieldset-wrapper .form-item {
