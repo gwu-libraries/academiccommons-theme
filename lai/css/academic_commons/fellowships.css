@@ -44,8 +44,11 @@
   display: block;
 }
 
+/* 
+  CSS for the areas dedicated to filtering and searching fellowships
+*/
 .find-fellowships {
-  /* Class name based on CSS class applied in the 'Fellowships Searching' View) */
+  /* Class name based on CSS class applied in the 'Fellowships Searching' View block) */
 }
 .find-fellowships form {
   display: flex;
@@ -55,7 +58,6 @@
   border: 1px solid #ccc;
   position: relative;
   margin-right: 15px;
-  background-color: #f9f9f9;
 }
 .find-fellowships form fieldset legend {
   margin: 0;
@@ -73,6 +75,10 @@
   content: "...";
   padding-left: 0.5em;
 }
+.find-fellowships form fieldset.checked-children legend:after {
+  content: "(" attr(data-checked-children-quantity) ")";
+  padding-left: 0;
+}
 .find-fellowships form fieldset .fieldset-wrapper {
   padding: 1em;
   border: 1px solid #ccc;
@@ -82,6 +88,12 @@
   background-color: #f9f9f9;
   min-width: 300px;
   display: none;
+}
+.find-fellowships form fieldset.checked-children, .find-fellowships form fieldset.checked-children .fieldset-wrapper {
+  border: 1px solid #0073aa;
+}
+.find-fellowships form fieldset.checked-children:not(:hover) legend {
+  background-image: linear-gradient(to right, rgba(0, 115, 170, 0.05), rgba(0, 115, 170, 0.05));
 }
 .find-fellowships form fieldset:hover, .find-fellowships form fieldset:focus, .find-fellowships form fieldset.focused-child {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
