@@ -73,13 +73,30 @@
         border-bottom: 1px solid #f9f9f9;
         background-color: #f9f9f9;
         &:after {
-          content: "...";
-          padding-left: .25em;
+          content: "";
+          /* CSS triangle */
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 10.4px 6px 0 6px;
+          border-color: #e8e8e8 transparent transparent transparent;
+          margin-left: .25em;
+          display: inline-block;
+          /* Border around CSS triangle */
+          filter: drop-shadow(-.5px -1px 0 #666) drop-shadow(.5px 0 0 #666) drop-shadow(0 1px 0 #666);
+        }
+        .foo::-ms-backdrop, &:after { /* IE11 hack since "filter:" above doesn't work there, though need to check if Edge sees this too */
+          border-color: #777 transparent transparent transparent;
         }
       }
       &.checked-children legend:after {
         content: "(" attr(data-checked-children-quantity) ")";
-        padding-left: 0;
+        margin-left: 0;
+        color: $gwlightblue;
+        /* the following to "undo" the CSS triangle */
+        border-style: none;
+        display: inline;
+        filter: none;
       }
       .fieldset-wrapper {
 	padding: 1em;

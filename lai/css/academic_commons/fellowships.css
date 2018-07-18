@@ -75,12 +75,30 @@
   background-color: #f9f9f9;
 }
 .find-fellowships form fieldset legend:after {
-  content: "...";
-  padding-left: 0.25em;
+  content: "";
+  /* CSS triangle */
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10.4px 6px 0 6px;
+  border-color: #e8e8e8 transparent transparent transparent;
+  margin-left: 0.25em;
+  display: inline-block;
+  /* Border around CSS triangle */
+  filter: drop-shadow(-0.5px -1px 0 #666) drop-shadow(0.5px 0 0 #666) drop-shadow(0 1px 0 #666);
+}
+.find-fellowships form fieldset legend .foo::-ms-backdrop, .find-fellowships form fieldset legend:after {
+  /* IE11 hack since "filter:" above doesn't work there, though need to check if Edge sees this too */
+  border-color: #777 transparent transparent transparent;
 }
 .find-fellowships form fieldset.checked-children legend:after {
   content: "(" attr(data-checked-children-quantity) ")";
-  padding-left: 0;
+  margin-left: 0;
+  color: #0073aa;
+  /* the following to "undo" the CSS triangle */
+  border-style: none;
+  display: inline;
+  filter: none;
 }
 .find-fellowships form fieldset .fieldset-wrapper {
   padding: 1em;
