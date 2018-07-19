@@ -1,6 +1,8 @@
 // ========== Global Mixins & Variables
 @import "../utilities";
 
+/* On pages for individual fellowships */
+
 .fellowship-details {
   width: 100%;
   margin: 0 0 1em;
@@ -22,30 +24,45 @@
     display: none;
   }
 
-}
-/*
-@media screen and (min-width: 550px) {
-  .fellowship-details {
-    width: 50%;
-    float: right;
-    margin-left: 2em;
+  // These are some fragile selectors, since for some reason the following classes that normally get output aren't: .field, .field__label, .field__items and .field__item
+  .fieldset-wrapper > div {
+    display: table-row !important;
+    & > div:first-child {
+      display: inline-block;
+      display: table-cell;
+//      text-align: right;
+      font-weight: bold !important; /* !important to override some GW style */
+      &:after {
+        content: ":";
+      }
+    }
+    & > div:not(:first-child) {
+      margin-left: .75em;
+      padding-bottom: .75em;
+    }
+    /* Overrides of the above for "GWU Sponsored?" and "GWU Endorsement Required?" fields, which are booleans instead of lists */
+    &.fellowship__gwu-sponsored, &.fellowship__gwu-endorsement-required {
+      display: block !important;
+      margin-top: .5em;
+      text-align: right;
+      & > div {
+        display: inline;
+        padding-right: 0;
+        margin-left: 0;
+        &:after {
+          content: "";
+        }
+      }
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
-@media screen and (min-width: 800px) {
-  .fellowship-details {
-    width: 33%;
-  }
-}
-
-.fellowship-details legend {
-  display: none;
-}
-*/
 
 .container .content div {
     display: block;
 }
-
 
 /* 
   CSS for the areas dedicated to filtering and searching fellowships
