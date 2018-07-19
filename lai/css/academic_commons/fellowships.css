@@ -49,15 +49,14 @@
 */
 .find-fellowships {
   /* Class name based on CSS class applied in the 'Fellowships Searching' View block) */
-  margin-top: 2em;
+  margin-top: 1.5em;
 }
 .find-fellowships form {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
 }
 .find-fellowships form fieldset {
-  order: 5;
+  order: 1;
   border: 1px solid #ccc;
   position: relative;
   margin-right: 15px;
@@ -129,26 +128,28 @@
 }
 .find-fellowships form > .js-form-type-textfield {
   /* Search box */
-  order: 1;
+  order: 3;
   white-space: nowrap;
   margin-right: 1em;
   margin-bottom: 1em;
 }
 .find-fellowships form .form-actions {
   /* Search submit button */
-  order: 2;
+  order: 4;
   flex: 1;
   margin-bottom: 1em;
 }
 .find-fellowships form > .js-form-type-select {
   /* Sort dropdown */
-  order: 3;
+  order: 5;
   margin-left: auto;
 }
 .find-fellowships form:before {
+  /* Hack to force "line break" between rows of flex children by setting its "order" group value to be 1 higher than the "row" preceding it */
   content: "";
   width: 100%;
-  order: 4;
+  order: 2;
+  margin-bottom: 1em;
 }
 
 .find-fellowships .fieldset-wrapper .form-item {
@@ -224,5 +225,37 @@
 .find-fellowships .fieldset-wrapper .form-item input:focus + label:not(:hover) {
   outline: 1px dotted;
 }
+
+/* CSS for the results on the fellowships searching/filtering page */
+/* hiding this while still working it out
+=========
+.find-fellowships .field-content {
+  clear: both;
+  &:after {
+width: 100%;
+content: "";
+display: block;
+}
+  & > * {
+//    margin-left: 170px;    
+  }
+  .fellowships-region {
+border: 1px solid transparent;
+    min-width: 120px;
+    max-width: 120px;
+    min-height: 120px;
+    border-radius: 20px;
+    background-color: rgba($gwlightblue,1);
+    background-image: url("/themes/lai/images/north-america.svg");
+    background-image: url("/themes/lai/images/earth.svg");
+    background-repeat: no-repeat;
+    background-size: calc(100% - 30px);
+    background-position: center;
+    float: right;
+    margin: 0 0px 20px 20px;
+  }
+}
+=========
+*/
 
 /*# sourceMappingURL=fellowships.css.map */
