@@ -20,6 +20,9 @@ function lai_preprocess_block(&$variables) {
   }
 }
 
+/**
+ * Pull in some JS (via one of our theme 'libraries') specifically just on the /fellowships page as opposed to loading it on the whole site
+ */
 function lai_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
   if ($form['#id'] == 'views-exposed-form-fellowships-searching-block-1') {
     $form['#attached']['library'][] = 'lai/exposedfiltersoverrides';
