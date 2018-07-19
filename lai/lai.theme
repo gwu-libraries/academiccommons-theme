@@ -29,6 +29,16 @@ function lai_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
   }
 }
 
+/**
+ * Alter the "placeholder" attribute for the homepage search bar, and make it larger
+ */
+function lai_form_search_block_form_alter(&$form, &$form_state, $form_id) {
+  $form['keys']['#attributes']['placeholder'] = t('I want help with ...');
+  $form['keys']['#attributes']['size'] = 30;
+  $form['keys']['#attributes']['maxlength'] = 255;
+}
+
+
 use Drupal\Core\Cache\CacheableMetadata;
 
 /**
