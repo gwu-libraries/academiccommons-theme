@@ -249,7 +249,7 @@
     min-height: 120px;
     border-radius: 20px;
     background-color: gray;
-    background-image: url("/themes/lai/images/earth.svg");
+    background-image: url("/themes/lai/images/fellowship-regions/earth.svg");
     background-repeat: no-repeat;
     background-size: calc(100% - 30px);
     background-position: center;
@@ -259,9 +259,13 @@
     &:after {
       position: absolute;
       top: 100%;
-      margin-top: .5em;
+      margin-top: .25em;
       content: "Multiple Regions";
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
     }
+    display: none; /* can undo once we have more time to work on icons and fewer major bugs to work out */
   }
 }
 
@@ -298,6 +302,11 @@ $regions: map-keys($regioncolors);
     background-color: $thiscolor;
     &:after {
       content: attr(data-region-name); /* data-region-name set in the View with override results */
+    }
+    @if ($thisregion == "asia") {
+      background-image: url("/themes/lai/images/fellowship-regions/#{$thisregion}.svg");
+      background-size: calc(100% - 20px);
+      background-color: #c8b18b; /* GW buff */
     }
   }
 }

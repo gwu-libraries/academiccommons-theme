@@ -252,19 +252,24 @@
   min-height: 120px;
   border-radius: 20px;
   background-color: gray;
-  background-image: url("/themes/lai/images/earth.svg");
+  background-image: url("/themes/lai/images/fellowship-regions/earth.svg");
   background-repeat: no-repeat;
   background-size: calc(100% - 30px);
   background-position: center;
   float: right;
   margin: 0 0px 20px 20px;
   position: relative;
+  display: none;
+  /* can undo once we have more time to work on icons and fewer major bugs to work out */
 }
 .find-fellowships .field-content .fellowships-region:after {
   position: absolute;
   top: 100%;
-  margin-top: 0.5em;
+  margin-top: 0.25em;
   content: "Multiple Regions";
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
 }
 
 .fellowships-region.africa:not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc) {
@@ -277,6 +282,10 @@
 
 .fellowships-region.asia:not(.africa):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc) {
   background-color: #ffc82e;
+  background-image: url("/themes/lai/images/fellowship-regions/asia.svg");
+  background-size: calc(100% - 20px);
+  background-color: #c8b18b;
+  /* GW buff */
 }
 .fellowships-region.asia:not(.africa):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc):after {
   content: attr(data-region-name);
