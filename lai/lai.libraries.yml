@@ -9,6 +9,8 @@ global:
     js/build/bootstrap.js: {}
     js/build/sticky-nav.js: {}
     js/build/resources.js: {}
+    js/build/meanmenu.js: {}
+    js/build/lai-customizations.js: {} # listed last to access references in files listed before it
   dependencies:
     - core/jquery
 

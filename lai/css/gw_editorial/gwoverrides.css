@@ -2,9 +2,8 @@
 @import url("nice_menus.css");
 @import url("gwu-proto-nice-menu.css");
 /* =========== GW Page Layout =========== */
-#skip-link {
-  z-index: 3;
-  position: relative;
+#skip p {
+  margin: 0;
 }
 
 /* =========== GW Header =========== */
@@ -60,16 +59,14 @@
   }
 }
 
-/* =========== GW Nav Bar =========== */
-.mean-nav ul.nice-menu li::before {
-  display: none;
-}
-
-#navigation-mobile, #nav-bar.sticky {
+/* =========== GW Nav Bar and Hamburger Menu =========== */
+#nav-bar.sticky {
   position: fixed;
   z-index: 10;
 }
 
+/* Replicate link styling for cases where it might just a <span> (misnomered .menu__link)
+   for cases where we want top-level menu items that are just text instead of pointers to pages, as originally desired */
 ul.nice-menu .menu__link {
   color: #fefefe;
   text-decoration: none;
@@ -89,6 +86,40 @@ ul.nice-menu .menu__link:focus + ul {
 
 span.menu__link {
   cursor: default;
+}
+
+/* Since our implementation will likely make the menu non-fixed, remove the z-index that was overlapping the Drupal toolbar */
+.mean-container .mean-bar {
+  z-index: auto;
+}
+
+/* Forcing no line breaks makes less sense in mobile menu (overrides above) */
+.mean-nav ul.nice-menu a {
+  white-space: normal;
+}
+
+/* Overriding some stuff caused by our custom/hackish menu implementation not removing the .nice-menu class apparently */
+ul.nice-menu a.mean-expand {
+  padding: 0;
+}
+
+.mean-nav ul.nice-menu li::before {
+  display: none;
+}
+
+/* Padding makes more sense than text-indent for our menu items that end up wrapping lines when small enough */
+.mean-container .mean-nav ul li a {
+  text-indent: 0;
+}
+.mean-container .mean-nav ul li ul li a {
+  text-indent: 0;
+  padding-left: 1.5rem;
+}
+
+/* The hamburger menu's label ("MENU") wasn't originally conceived for possibly including links, 
+   but since we've customized it to make that text configurable, improve styling of any links in there */
+#mobile-menu-label a, #mobile-menu-label a:focus, #mobile-menu-label a:hover {
+  color: #fff;
 }
 
 /* =========== GW Buttons ========== */
