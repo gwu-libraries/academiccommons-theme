@@ -241,33 +241,64 @@
 /* CSS for the results on the fellowships searching/filtering page */
 
 
-/* hiding this while still working it out
-=========
 .find-fellowships .field-content {
   clear: both;
-  &:after {
-width: 100%;
-content: "";
-display: block;
-}
-  & > * {
-//    margin-left: 170px;    
-  }
   .fellowships-region {
-border: 1px solid transparent;
     min-width: 120px;
     max-width: 120px;
     min-height: 120px;
     border-radius: 20px;
-    background-color: rgba($gwlightblue,1);
-    background-image: url("/themes/lai/images/north-america.svg");
+    background-color: gray;
     background-image: url("/themes/lai/images/earth.svg");
     background-repeat: no-repeat;
     background-size: calc(100% - 30px);
     background-position: center;
     float: right;
     margin: 0 0px 20px 20px;
+    position: relative;
+    &:after {
+      position: absolute;
+      top: 100%;
+      margin-top: .5em;
+      content: "Multiple Regions";
+    }
   }
 }
-=========
-*/
+
+// Loop through each region and its associated color in the $regioncolor SASS map.
+// For each region construct a selector that looks something like .region1:not(.region2):not(.region3), etc.
+// in order to make different colored icons for fellowships that only apply to one region,
+// The color for default / any region is set above
+
+$regioncolors: (
+  africa: rgb(227,25,55),
+  asia: rgb(255,200,46),
+  centralam: rgb(122,193,67),
+  europe: rgb(0,131,103),
+  mideast: rgb(0,150,214),
+  northam: rgb(0,64,101),
+  southam: rgb(0,0,0),
+  dc: rgb(255,255,255)
+);
+
+$regions: map-keys($regioncolors);
+
+@for $i from 1 through length($regioncolors) {
+  $thisregion: nth($regions, $i);
+  $nots: "";
+  $thiscolor: "";
+  @each $region, $color in $regioncolors {
+    @if ($thisregion != $region) {
+      $nots: $nots + ":not(." + $region + ")";
+    } @else {
+      $thiscolor: $color;
+    }
+  }
+  .fellowships-region.#{$thisregion}#{$nots} {
+    background-color: $thiscolor;
+    &:after {
+      content: attr(data-region-name); /* data-region-name set in the View with override results */
+    }
+  }
+}
+

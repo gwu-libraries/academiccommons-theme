@@ -243,35 +243,92 @@
 }
 
 /* CSS for the results on the fellowships searching/filtering page */
-/* hiding this while still working it out
-=========
 .find-fellowships .field-content {
   clear: both;
-  &:after {
-width: 100%;
-content: "";
-display: block;
 }
-  & > * {
-//    margin-left: 170px;    
-  }
-  .fellowships-region {
-border: 1px solid transparent;
-    min-width: 120px;
-    max-width: 120px;
-    min-height: 120px;
-    border-radius: 20px;
-    background-color: rgba($gwlightblue,1);
-    background-image: url("/themes/lai/images/north-america.svg");
-    background-image: url("/themes/lai/images/earth.svg");
-    background-repeat: no-repeat;
-    background-size: calc(100% - 30px);
-    background-position: center;
-    float: right;
-    margin: 0 0px 20px 20px;
-  }
+.find-fellowships .field-content .fellowships-region {
+  min-width: 120px;
+  max-width: 120px;
+  min-height: 120px;
+  border-radius: 20px;
+  background-color: gray;
+  background-image: url("/themes/lai/images/earth.svg");
+  background-repeat: no-repeat;
+  background-size: calc(100% - 30px);
+  background-position: center;
+  float: right;
+  margin: 0 0px 20px 20px;
+  position: relative;
 }
-=========
-*/
+.find-fellowships .field-content .fellowships-region:after {
+  position: absolute;
+  top: 100%;
+  margin-top: 0.5em;
+  content: "Multiple Regions";
+}
+
+.fellowships-region.africa:not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc) {
+  background-color: #e31937;
+}
+.fellowships-region.africa:not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc):after {
+  content: attr(data-region-name);
+  /* data-region-name set in the View with override results */
+}
+
+.fellowships-region.asia:not(.africa):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc) {
+  background-color: #ffc82e;
+}
+.fellowships-region.asia:not(.africa):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc):after {
+  content: attr(data-region-name);
+  /* data-region-name set in the View with override results */
+}
+
+.fellowships-region.centralam:not(.africa):not(.asia):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc) {
+  background-color: #7ac143;
+}
+.fellowships-region.centralam:not(.africa):not(.asia):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc):after {
+  content: attr(data-region-name);
+  /* data-region-name set in the View with override results */
+}
+
+.fellowships-region.europe:not(.africa):not(.asia):not(.centralam):not(.mideast):not(.northam):not(.southam):not(.dc) {
+  background-color: #008367;
+}
+.fellowships-region.europe:not(.africa):not(.asia):not(.centralam):not(.mideast):not(.northam):not(.southam):not(.dc):after {
+  content: attr(data-region-name);
+  /* data-region-name set in the View with override results */
+}
+
+.fellowships-region.mideast:not(.africa):not(.asia):not(.centralam):not(.europe):not(.northam):not(.southam):not(.dc) {
+  background-color: #0096d6;
+}
+.fellowships-region.mideast:not(.africa):not(.asia):not(.centralam):not(.europe):not(.northam):not(.southam):not(.dc):after {
+  content: attr(data-region-name);
+  /* data-region-name set in the View with override results */
+}
+
+.fellowships-region.northam:not(.africa):not(.asia):not(.centralam):not(.europe):not(.mideast):not(.southam):not(.dc) {
+  background-color: #004065;
+}
+.fellowships-region.northam:not(.africa):not(.asia):not(.centralam):not(.europe):not(.mideast):not(.southam):not(.dc):after {
+  content: attr(data-region-name);
+  /* data-region-name set in the View with override results */
+}
+
+.fellowships-region.southam:not(.africa):not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.dc) {
+  background-color: black;
+}
+.fellowships-region.southam:not(.africa):not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.dc):after {
+  content: attr(data-region-name);
+  /* data-region-name set in the View with override results */
+}
+
+.fellowships-region.dc:not(.africa):not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam) {
+  background-color: white;
+}
+.fellowships-region.dc:not(.africa):not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):after {
+  content: attr(data-region-name);
+  /* data-region-name set in the View with override results */
+}
 
 /*# sourceMappingURL=fellowships.css.map */
