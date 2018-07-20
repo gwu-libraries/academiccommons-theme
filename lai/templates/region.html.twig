@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Override of default theme implementation to display a region.
+ * Maxs says: overriding this in order to add classes I could really use for better CSS and JS selectors 
+ * (trying to make them in the same style as used before either by D7 and/or GW since we're reusing some of that code)
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region <div>.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if content %}
+  <div{{ attributes.addClass('region').addClass('region-' ~ region) }}>
+    {{ content }}
+  </div>
+{% endif %}
