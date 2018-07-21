@@ -88,6 +88,12 @@ span.menu__link {
   cursor: default;
 }
 
+/* Avoid the problem of the last submenu's contents from going off-screen when open or causing a mysterious horizontal scrollbar when closed by right-aligning it to the parent. */
+ul.nice-menu-down li:last-child ul, ul.nice-menu li:last-child ul {
+  left: auto;
+  right: 1px;
+}
+
 /* Since our implementation will likely make the menu non-fixed, remove the z-index that was overlapping the Drupal toolbar */
 .mean-container .mean-bar {
   z-index: auto;
