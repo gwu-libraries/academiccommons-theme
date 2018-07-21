@@ -2,8 +2,14 @@
 @import url("nice_menus.css");
 @import url("gwu-proto-nice-menu.css");
 /* =========== GW Page Layout =========== */
+/* Not quite an override ... just that #skip-link is now #skip */
 #skip p {
   margin: 0;
+}
+
+/* I don't know why this has a 'margin-bottom: -78px' in Editorial, but it's messing us up because we don't have the same structure that undoes that effect. */
+#gwtoday-local-footer {
+  margin-bottom: 0;
 }
 
 /* =========== GW Header =========== */
