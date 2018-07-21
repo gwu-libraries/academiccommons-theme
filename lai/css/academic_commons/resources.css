@@ -4,7 +4,11 @@
 .resources {
   display: flex !important;
   flex-wrap: wrap;
-  margin-right: -20px;
+}
+@media screen and (min-width: 550px) {
+  .resources {
+    margin-right: -20px;
+  }
 }
 .resources > div {
   width: 100%;

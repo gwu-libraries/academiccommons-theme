@@ -8,7 +8,9 @@
 .resources {
   display: flex !important;
   flex-wrap: wrap;
-  margin-right: -20px;
+  @include mediaMin(550px) {
+    margin-right: -20px;
+  }
   > div {
     width: 100%;
     @include mediaMin(550px) {
