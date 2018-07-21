@@ -1,7 +1,9 @@
 {#
 /**
  * @file
- * Default theme implementation for the basic structure of a single Drupal page.
+ * Override of the default theme implementation for the basic structure of a single Drupal page.
+ * Maxs: Changing the "#navigation" selector for the first skip link to "#nav-bar", 
+ * since our inclusion of meanmenu.js to handle the mobile/hamburger menu detaches #navigation from the DOM
  *
  * Variables:
  * - logged_in: A flag indicating if user is logged in.
@@ -67,7 +69,7 @@
   ) }}>
     <div id="skip">
       <p>
-        <a href="#navigation" class="visually-hidden focusable skip-link">
+        <a href="#nav-bar" class="visually-hidden focusable skip-link">
           {{ 'Skip to main navigation'|t }}
         </a>
       </p>
