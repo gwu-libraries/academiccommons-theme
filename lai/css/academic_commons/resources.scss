@@ -103,22 +103,31 @@
 .resource #block-lai-page-title {
   position: relative;
   box-sizing: border-box;
-  margin: .5em 0 1em;
+  margin: 1em 0;
+  @include mediaMin(650px) {
+    margin: .5em 0 1em;
+  }
   padding-bottom: 1em;
   /* &:after is for the skewed gradient you see behind the header */
   &:after {
     content: "";
     display: block;
     position: absolute;
-    top: 0;
-    left: -25px;
-    width: calc(100% + 50px);
     height: 100%;
-    transform: skew(-20deg);
+    top: 0;
+    width: 100%;
+    @include mediaMin(650px) {
+      left: -25px;
+      width: calc(100% + 50px);
+      transform: skew(-20deg);
+    }
   }
   h1 {
+    font-size: 2.2em;
+    @include mediaMin(650px) {
+      font-size: 3em;
+    }
     padding: .3em .3em .4em;
-    margin-bottom: .5em;
     position: relative;
     z-index: 2;
     margin: 0;
@@ -129,8 +138,8 @@
       display: block;
       position: absolute;
       top: 0;
-      left: -22px;
-      width: calc(100% + 50px);
+      left: -30px;
+      width: calc(100% + 30px);
       height: 100%;
       transform: skew(-20deg);
 //      background-color: rgba(255,255,255,.8);
@@ -174,13 +183,22 @@ $gwcolors: rgb(227,25,55) rgb(255,200,46) rgb(122,193,67) rgb(0,131,103) rgb(0,1
    implemented as a block in order to place the icon before the title in the DOM. */
 .resource-icon-block { 
   float: right;
-  margin-right: 1em;
+  margin-right: 1.5em;
+  margin-left: 2em;
+  @include mediaMin(650px) {
+    margin-right: 1em;
+    margin-left: 5em;
+  }
+  margin-bottom: 1em;
   margin-top: 1.5em;
-  margin-left: 5em;
   position: relative;
   z-index: 3;
   svg {
-    max-width: 50px;
-    max-height: 50px;
+    max-width: 35px;
+    max-height: 35px;
+    @include mediaMin(650px) {
+      max-width: 50px;
+      max-height: 50px;
+    }
   }
 }

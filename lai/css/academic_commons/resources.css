@@ -106,36 +106,51 @@
 .resource #block-lai-page-title {
   position: relative;
   box-sizing: border-box;
-  margin: 0.5em 0 1em;
+  margin: 1em 0;
   padding-bottom: 1em;
   /* &:after is for the skewed gradient you see behind the header */
+}
+@media screen and (min-width: 650px) {
+  .resource #block-lai-page-title {
+    margin: 0.5em 0 1em;
+  }
 }
 .resource #block-lai-page-title:after {
   content: "";
   display: block;
   position: absolute;
-  top: 0;
-  left: -25px;
-  width: calc(100% + 50px);
   height: 100%;
-  transform: skew(-20deg);
+  top: 0;
+  width: 100%;
+}
+@media screen and (min-width: 650px) {
+  .resource #block-lai-page-title:after {
+    left: -25px;
+    width: calc(100% + 50px);
+    transform: skew(-20deg);
+  }
 }
 .resource #block-lai-page-title h1 {
+  font-size: 2.2em;
   padding: 0.3em 0.3em 0.4em;
-  margin-bottom: 0.5em;
   position: relative;
   z-index: 2;
   margin: 0;
   display: table-cell;
   /* &:before is for the skewed white area you see on top of the gradient but below the header text */
 }
+@media screen and (min-width: 650px) {
+  .resource #block-lai-page-title h1 {
+    font-size: 3em;
+  }
+}
 .resource #block-lai-page-title h1:before {
   content: "";
   display: block;
   position: absolute;
   top: 0;
-  left: -22px;
-  width: calc(100% + 50px);
+  left: -30px;
+  width: calc(100% + 30px);
   height: 100%;
   transform: skew(-20deg);
   background-color: #fff;
@@ -266,15 +281,28 @@
    implemented as a block in order to place the icon before the title in the DOM. */
 .resource-icon-block {
   float: right;
-  margin-right: 1em;
+  margin-right: 1.5em;
+  margin-left: 2em;
+  margin-bottom: 1em;
   margin-top: 1.5em;
-  margin-left: 5em;
   position: relative;
   z-index: 3;
 }
+@media screen and (min-width: 650px) {
+  .resource-icon-block {
+    margin-right: 1em;
+    margin-left: 5em;
+  }
+}
 .resource-icon-block svg {
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 35px;
+  max-height: 35px;
+}
+@media screen and (min-width: 650px) {
+  .resource-icon-block svg {
+    max-width: 50px;
+    max-height: 50px;
+  }
 }
 
 /*# sourceMappingURL=resources.css.map */
