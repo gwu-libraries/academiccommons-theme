@@ -131,9 +131,10 @@
       width: calc(100% + 50px);
       height: 100%;
       transform: skew(-20deg);
-      background-color: rgba(255,255,255,.8);
-      border-style: solid;
-      border-width: 1px 0 0 1px;
+//      background-color: rgba(255,255,255,.8);
+      background-color: #fff;
+//      border-style: solid;
+//      border-width: 1px 0 0 1px;
       z-index: -1;
     }
   }
@@ -147,9 +148,9 @@ $gwcolors: rgb(227,25,55) rgb(255,200,46) rgb(122,193,67) rgb(0,131,103) rgb(0,1
   .resource-weight-#{$i - 1} + #block-lai-page-title:after {
     background-image: linear-gradient(-45deg, rgba(nth($gwcolors, $i),1), rgba(nth($gwcolors, $i),.1));
   }
-  .resource-weight-#{$i - 1} + #block-lai-page-title h1:before {
-    border-color: rgba(nth($gwcolors, $i),.2);
-  }
+//  .resource-weight-#{$i - 1} + #block-lai-page-title h1:before {
+//    border-color: rgba(nth($gwcolors, $i),.2);
+//  }
   /* The gradients at the sides of each "bucket" on the homepage */
   [data-weight='#{$i - 1}'] .resource-title:before, 
   [data-weight='#{$i - 1 + length($gwcolors)}'] .resource-title:before, 
