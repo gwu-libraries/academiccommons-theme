@@ -1,8 +1,8 @@
 .path-frontpage #search-block-form {
   margin: 1em;
   display: flex;
-  padding: 1em 2em;
-  background-image: linear-gradient(to right, rgba(0, 115, 170, 0), rgba(0, 115, 170, 0.8), rgba(0, 115, 170, 0));
+  padding: 1em;
+  background-image: linear-gradient(to right, rgba(0, 115, 170, 0), rgba(0, 115, 170, 0.8) 30%, rgba(0, 115, 170, 0.8) 70%, rgba(0, 115, 170, 0));
   transform: skewX(-40deg);
 }
 .path-frontpage #search-block-form > * {
@@ -10,15 +10,15 @@
 }
 @media screen and (min-width: 600px) {
   .path-frontpage #search-block-form {
-    margin: 1em 4em 1em;
-    padding: 1em 1.5em;
+    background-image: linear-gradient(to right, rgba(0, 115, 170, 0), rgba(0, 115, 170, 0.8) 40%, rgba(0, 115, 170, 0.8) 60%, rgba(0, 115, 170, 0));
+    margin: 1em 3em 1em;
+    padding: 1em 2em;
   }
 }
 @media screen and (min-width: 900px) {
   .path-frontpage #search-block-form {
     margin: 1em 8em 2em;
     display: flex;
-    padding: 1em 2em;
   }
 }
 .path-frontpage #search-block-form div:first-child {
