@@ -40,14 +40,14 @@
   position: absolute;
   min-width: 100%;
   min-height: 100%;
-  max-width: none;
+  max-width: 100%;
   max-height: none;
   width: auto !important;
   /* !importants here to override GW CSS */
   height: auto !important;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 30%;
+  transform: translate(-50%, -30%);
 }
 .resources .resource-title {
   background-image: linear-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.8) 100%);

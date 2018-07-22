@@ -36,13 +36,13 @@
       position: absolute;
       min-width: 100%;
       min-height: 100%;
-      max-width: none;
+      max-width: 100%;
       max-height: none;
       width: auto !important; /* !importants here to override GW CSS */
       height: auto !important;
       left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      top: 30%;
+      transform: translate(-50%, -30%);
     }
   }
   .resource-title {
