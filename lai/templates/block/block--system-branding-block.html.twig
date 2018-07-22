@@ -4,7 +4,10 @@
  * @file
  * Theme override for a branding block.
  * 
- * Maxs: changing the alt text for the logo
+ * Maxs: changing the alt text for the logo, adding some Editorial-related selectors, and 
+ * including the "A division of LAI" part.
+ * We may need to revisit this markup once the "Start Here" Call-to-Action is added to the Academic Commons site,
+ * since it's expected to be a child of div#header-wrapper, but this is the branding block.
  *
  * Each branding element variable (logo, name, slogan) is only available if
  * enabled in the block configuration.
@@ -16,11 +19,18 @@
  */
 #}
 {% block content %}
-  {% if site_logo %}
-    <a href="{{ path('<front>') }}" title="{{ 'GW | Academic Commons'|t }}" rel="home" class="site-logo">
-      <img src="{{ site_logo }}" alt="{{ 'GW | Academic Commons'|t }}" />
-    </a>
-  {% endif %}
+  <div id="header-wrapper">
+    <div class="gwlogo">
+      {% if site_logo %}
+        <a href="{{ path('<front>') }}" title="{{ 'GW | Academic Commons'|t }}" rel="home" class="site-logo">
+          <img src="{{ site_logo }}" alt="{{ 'GW | Academic Commons'|t }}" />
+        </a>
+      {% endif %}
+      <div id="division-of">
+        A division of <a href="https://lai.gwu.edu/" target="_blank">Libraries & Academic Innovation</a>
+      </div>
+    </div>
+  </div>
   {% if site_name %}
     <div class="site-name">
       <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">{{ site_name }}</a>
