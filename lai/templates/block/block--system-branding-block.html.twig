@@ -3,6 +3,8 @@
 /**
  * @file
  * Theme override for a branding block.
+ * 
+ * Maxs: changing the alt text for the logo
  *
  * Each branding element variable (logo, name, slogan) is only available if
  * enabled in the block configuration.
@@ -15,8 +17,8 @@
 #}
 {% block content %}
   {% if site_logo %}
-    <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="site-logo">
-      <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" />
+    <a href="{{ path('<front>') }}" title="{{ 'GW | Academic Commons'|t }}" rel="home" class="site-logo">
+      <img src="{{ site_logo }}" alt="{{ 'GW | Academic Commons'|t }}" />
     </a>
   {% endif %}
   {% if site_name %}
