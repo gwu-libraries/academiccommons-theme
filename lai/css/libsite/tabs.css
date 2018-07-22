@@ -10,6 +10,19 @@
 /* ~ Drupal Specific ~ */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+.tabs.primary {
+  padding: 0;
+  margin: 1em 0;
+  border: 0 solid #ccc;
+  border-bottom-width: 1px;
+  display: block;
+}
+.tabs.primary:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .tabs__tab {
 	overflow: hidden;
     border: 1px solid #ccc;
@@ -17,8 +30,14 @@
     float: left;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: .5em 1em;
     transition: 0.3s;
+    margin-bottom: -1px;
+}
+
+.tabs__tab--active {
+  background-color: #fbfbfb;
+  border-bottom: 1px solid #fbfbfb;
 }
 
 .tabs__tab a {
