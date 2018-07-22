@@ -110,11 +110,6 @@
   padding-bottom: 1em;
   /* &:after is for the skewed gradient you see behind the header */
 }
-@media screen and (min-width: 650px) {
-  .resource #block-lai-page-title {
-    margin: 0.5em 0 1em;
-  }
-}
 .resource #block-lai-page-title:after {
   content: "";
   display: block;
@@ -123,7 +118,7 @@
   top: 0;
   width: 100%;
 }
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 1150px) {
   .resource #block-lai-page-title:after {
     left: -25px;
     width: calc(100% + 50px);
@@ -139,7 +134,12 @@
   display: table-cell;
   /* &:before is for the skewed white area you see on top of the gradient but below the header text */
 }
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 600px) {
+  .resource #block-lai-page-title h1 {
+    font-size: 2.6em;
+  }
+}
+@media screen and (min-width: 800px) {
   .resource #block-lai-page-title h1 {
     font-size: 3em;
   }
@@ -150,11 +150,16 @@
   position: absolute;
   top: 0;
   left: -30px;
-  width: calc(100% + 30px);
+  width: calc(100% + 35px);
   height: 100%;
   transform: skew(-20deg);
   background-color: #fff;
   z-index: -1;
+}
+@media screen and (min-width: 800px) {
+  .resource #block-lai-page-title h1:before {
+    width: calc(100% + 50px);
+  }
 }
 
 /* The gradient behind the titles on individual resource landing pages */
@@ -288,7 +293,12 @@
   position: relative;
   z-index: 3;
 }
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 600px) {
+  .resource-icon-block {
+    margin-left: 4em;
+  }
+}
+@media screen and (min-width: 1150px) {
   .resource-icon-block {
     margin-right: 1em;
     margin-left: 5em;
@@ -298,7 +308,13 @@
   max-width: 35px;
   max-height: 35px;
 }
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 600px) {
+  .resource-icon-block svg {
+    max-width: 45px;
+    max-height: 45px;
+  }
+}
+@media screen and (min-width: 800px) {
   .resource-icon-block svg {
     max-width: 50px;
     max-height: 50px;

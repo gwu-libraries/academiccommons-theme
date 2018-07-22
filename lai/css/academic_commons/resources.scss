@@ -104,9 +104,6 @@
   position: relative;
   box-sizing: border-box;
   margin: 1em 0;
-  @include mediaMin(650px) {
-    margin: .5em 0 1em;
-  }
   padding-bottom: 1em;
   /* &:after is for the skewed gradient you see behind the header */
   &:after {
@@ -116,7 +113,7 @@
     height: 100%;
     top: 0;
     width: 100%;
-    @include mediaMin(650px) {
+    @include mediaMin(1150px) {
       left: -25px;
       width: calc(100% + 50px);
       transform: skew(-20deg);
@@ -124,7 +121,10 @@
   }
   h1 {
     font-size: 2.2em;
-    @include mediaMin(650px) {
+    @include mediaMin(600px) {
+      font-size: 2.6em;
+    }
+    @include mediaMin(800px) {
       font-size: 3em;
     }
     padding: .3em .3em .4em;
@@ -139,7 +139,10 @@
       position: absolute;
       top: 0;
       left: -30px;
-      width: calc(100% + 30px);
+      width: calc(100% + 35px);
+      @include mediaMin(800px) {
+        width: calc(100% + 50px);
+      }
       height: 100%;
       transform: skew(-20deg);
 //      background-color: rgba(255,255,255,.8);
@@ -185,7 +188,10 @@ $gwcolors: rgb(227,25,55) rgb(255,200,46) rgb(122,193,67) rgb(0,131,103) rgb(0,1
   float: right;
   margin-right: 1.5em;
   margin-left: 2em;
-  @include mediaMin(650px) {
+  @include mediaMin(600px) {
+    margin-left: 4em;
+  }
+  @include mediaMin(1150px) {
     margin-right: 1em;
     margin-left: 5em;
   }
@@ -196,7 +202,11 @@ $gwcolors: rgb(227,25,55) rgb(255,200,46) rgb(122,193,67) rgb(0,131,103) rgb(0,1
   svg {
     max-width: 35px;
     max-height: 35px;
-    @include mediaMin(650px) {
+    @include mediaMin(600px) {
+      max-width: 45px;
+      max-height: 45px;
+    }
+    @include mediaMin(800px) {
       max-width: 50px;
       max-height: 50px;
     }
