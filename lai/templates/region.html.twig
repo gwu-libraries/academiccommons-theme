@@ -2,7 +2,7 @@
 /**
  * @file
  * Override of default theme implementation to display a region.
- * Maxs says: overriding this in order to add classes I could really use for better CSS and JS selectors 
+ * Maxs says: overriding this in order to add classes, IDs and footer/header tags I could really use for better CSS and JS selectors 
  * (trying to make them in the same style as used before either by D7 and/or GW since we're reusing some of that code)
  *
  * Available variables:
@@ -16,8 +16,14 @@
  * @ingroup themeable
  */
 #}
+
+{% set tag = "div" %}
+{% if region == "header" or region == "footer" %}
+  {%set tag = region %}
+{% endif %}
+
 {% if content %}
-  <div{{ attributes.addClass('region').addClass('region-' ~ region) }}>
+  <{{ tag }}{{ attributes.addClass('region').addClass('region-' ~ region).setAttribute('id',region) }}>
     {{ content }}
-  </div>
+  </{{ tag }}>
 {% endif %}
