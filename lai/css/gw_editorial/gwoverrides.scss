@@ -148,6 +148,34 @@ ul.nice-menu a.mean-expand {
   }
 }
 
+/* =========== GW Headers ========== */
+
+/* Some more mobile-friendly header sizes */
+h1 {
+  font-size: 2.5em;
+  @include mediaMin(500px) {
+    font-size: 3em;
+  }
+}
+h2 {
+  font-size: 1.8em;
+  @include mediaMin(500px) {
+    font-size: 2.25em;
+  }
+}
+h3 {
+  font-size: 1.45em;
+  @include mediaMin(500px) {
+    font-size: 1.75em;
+  }
+}
+h4 {
+  font-size: 1.2em;
+  @include mediaMin(500px) {
+    font-size: 1.25em;
+  }
+}
+
 /* =========== GW Buttons ========== */
 
 button, html input[type="button"], input[type="reset"], input[type="submit"] {
