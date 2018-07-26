@@ -61,10 +61,11 @@
 }
 
 /* 
-  CSS for the areas dedicated to filtering and searching fellowships
+  CSS for the areas dedicated to filtering and searching fellowships.
+  The .find-fellowships class was either applied in the 'Fellowships Searching' View block, 
+  or hard-coded into the FellowshipsFilterController.php output
 */
 .find-fellowships {
-  /* Class name based on CSS class applied in the 'Fellowships Searching' View block) */
   margin-top: 1.5em;
 }
 .find-fellowships form {
