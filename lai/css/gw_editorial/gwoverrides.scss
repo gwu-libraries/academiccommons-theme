@@ -18,6 +18,27 @@
   margin-bottom: 0;
 }
 
+/* The following is to prevent covering up of a header or text part-way down the page that has been linked to with via a hash (#).
+   The 48px (blue navbar), 39px (first level of Drupal admin toolbar) and 79px (both levels of Drupal admin toolbar) are
+   perhaps subject to change, but this at least is a relatively simple non-JS solution for now. */
+.block-lai-content *:target:before {
+  display: block;
+  content: " ";
+  visibility: hidden;
+  position: relative;
+  z-indxex: -1;
+  margin-top: -48px;
+  height: 48px;
+  body.toolbar-fixed.toolbar-vertical &, body.toolbar-fixed:not(.toolbar-tray-open) & {
+    margin-top: -48px - 39px;
+    height: 48px + 39px;
+  }
+  body.toolbar-fixed.toolbar-horizontal.toolbar-tray-open & {
+    margin-top: -48px - 79px;
+    height: 48px + 79px;
+  }
+}
+
 /* =========== GW Header =========== */
 
 $headerHeight: 132;
