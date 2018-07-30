@@ -1,0 +1,48 @@
+// ========== Global Mixins & Variables
+@import "../utilities";
+
+#libraryFeed hr {
+  display: none;
+}
+
+#libraryFeed {
+  display: flex;
+  flex-wrap: wrap;
+  @include mediaMin(500px) {
+    margin-right: -20px;
+  }
+}
+
+#libraryFeed .libraryFeed {
+  width: 100%;
+  @include mediaMin(550px) {
+    width: calc(50% - 20px);
+    margin-right: 20px;
+  }
+  @include mediaMin(800px) {
+    width: calc(33.33% - 20px);
+  }
+  margin: 1em 0;
+  clear: left;
+}
+
+.feedTitle {
+  h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+  }
+}
+
+.feedImage {
+  width: 100px;
+  margin: 0 1em .5em 0;
+  float: left;
+  img {
+    width: 100px !important;
+  }
+}
+
+.feedDate, .feedLocation {
+  font-style: italic;
+  margin: 0 0 .5em;
+}

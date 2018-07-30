@@ -1,0 +1,51 @@
+#libraryFeed hr {
+  display: none;
+}
+
+#libraryFeed {
+  display: flex;
+  flex-wrap: wrap;
+}
+@media screen and (min-width: 500px) {
+  #libraryFeed {
+    margin-right: -20px;
+  }
+}
+
+#libraryFeed .libraryFeed {
+  width: 100%;
+  margin: 1em 0;
+  clear: left;
+}
+@media screen and (min-width: 550px) {
+  #libraryFeed .libraryFeed {
+    width: calc(50% - 20px);
+    margin-right: 20px;
+  }
+}
+@media screen and (min-width: 800px) {
+  #libraryFeed .libraryFeed {
+    width: calc(33.33% - 20px);
+  }
+}
+
+.feedTitle h3 {
+  margin-top: 0;
+  font-size: 1.5em;
+}
+
+.feedImage {
+  width: 100px;
+  margin: 0 1em 0.5em 0;
+  float: left;
+}
+.feedImage img {
+  width: 100px !important;
+}
+
+.feedDate, .feedLocation {
+  font-style: italic;
+  margin: 0 0 0.5em;
+}
+
+/*# sourceMappingURL=events.css.map */
