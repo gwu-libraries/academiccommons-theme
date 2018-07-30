@@ -1,24 +1,24 @@
-div.webform__webform div.form-item input:not([type=checkbox]):not([type=radio]), div.webform__webform div.form-item textarea, div.webform__webform div.form-item select, form.contact-message-feedback-form div.form-item input:not([type=checkbox]):not([type=radio]), form.contact-message-feedback-form div.form-item textarea, form.contact-message-feedback-form div.form-item select {
+div.webform__webform div.form-item input:not([type=checkbox]):not([type=radio]), div.webform__webform div.form-item textarea, div.webform__webform div.form-item select, form.contact-message-feedback-form div.form-item input:not([type=checkbox]):not([type=radio]), form.contact-message-feedback-form div.form-item textarea, form.contact-message-feedback-form div.form-item select, form.user-login-form div.form-item input:not([type=checkbox]):not([type=radio]), form.user-login-form div.form-item textarea, form.user-login-form div.form-item select {
   max-width: 100%;
   display: block;
   margin: 0 0 1em;
 }
-div.webform__webform div.form-item div[id], form.contact-message-feedback-form div.form-item div[id] {
+div.webform__webform div.form-item div[id], form.contact-message-feedback-form div.form-item div[id], form.user-login-form div.form-item div[id] {
   /* A generalish selector for what at the moment is currently just the helper text for the 'Course' field on the 'Indicate Interest' form */
   margin: 0.25em 0;
 }
 @media screen and (min-width: 600px) {
-  div.webform__webform div.form-item:not(.js-form-type-textarea), form.contact-message-feedback-form div.form-item:not(.js-form-type-textarea) {
+  div.webform__webform div.form-item:not(.js-form-type-textarea), form.contact-message-feedback-form div.form-item:not(.js-form-type-textarea), form.user-login-form div.form-item:not(.js-form-type-textarea) {
     display: table-row;
   }
-  div.webform__webform div.form-item:not(.js-form-type-textarea) label, div.webform__webform div.form-item:not(.js-form-type-textarea) input:not([type=checkbox]):not([type=radio]), div.webform__webform div.form-item:not(.js-form-type-textarea) select, form.contact-message-feedback-form div.form-item:not(.js-form-type-textarea) label, form.contact-message-feedback-form div.form-item:not(.js-form-type-textarea) input:not([type=checkbox]):not([type=radio]), form.contact-message-feedback-form div.form-item:not(.js-form-type-textarea) select {
+  div.webform__webform div.form-item:not(.js-form-type-textarea) label, div.webform__webform div.form-item:not(.js-form-type-textarea) input:not([type=checkbox]):not([type=radio]), div.webform__webform div.form-item:not(.js-form-type-textarea) select, form.contact-message-feedback-form div.form-item:not(.js-form-type-textarea) label, form.contact-message-feedback-form div.form-item:not(.js-form-type-textarea) input:not([type=checkbox]):not([type=radio]), form.contact-message-feedback-form div.form-item:not(.js-form-type-textarea) select, form.user-login-form div.form-item:not(.js-form-type-textarea) label, form.user-login-form div.form-item:not(.js-form-type-textarea) input:not([type=checkbox]):not([type=radio]), form.user-login-form div.form-item:not(.js-form-type-textarea) select {
     display: table-cell;
     margin: 0.5em 0;
   }
-  div.webform__webform div.form-item:not(.js-form-type-textarea) label, form.contact-message-feedback-form div.form-item:not(.js-form-type-textarea) label {
+  div.webform__webform div.form-item:not(.js-form-type-textarea) label, form.contact-message-feedback-form div.form-item:not(.js-form-type-textarea) label, form.user-login-form div.form-item:not(.js-form-type-textarea) label {
     padding: 0.5em 0.5em 0 0;
   }
-  div.webform__webform div.form-item:not(.js-form-type-textarea) div[id], form.contact-message-feedback-form div.form-item:not(.js-form-type-textarea) div[id] {
+  div.webform__webform div.form-item:not(.js-form-type-textarea) div[id], form.contact-message-feedback-form div.form-item:not(.js-form-type-textarea) div[id], form.user-login-form div.form-item:not(.js-form-type-textarea) div[id] {
     /* A generalish selector for what at the moment is currently just the helper text for the 'Course' field on the 'Indicate Interest' form */
     max-width: 450px;
   }

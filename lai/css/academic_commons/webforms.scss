@@ -1,7 +1,7 @@
 // ========== Global Mixins & Variables
 @import "../utilities";
 
-div.webform__webform div.form-item, form.contact-message-feedback-form div.form-item {
+div.webform__webform div.form-item, form.contact-message-feedback-form div.form-item, form.user-login-form div.form-item {
   input:not([type="checkbox"]):not([type="radio"]), textarea, select {
     max-width: 100%;
     display: block;
