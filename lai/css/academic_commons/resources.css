@@ -104,14 +104,14 @@
 }
 
 /* This is styling for the <h1> title on landing pages for individual resources or services. */
-.resource #block-lai-page-title {
+.resource #block-lai-page-title, .resource-override #block-lai-page-title {
   position: relative;
   box-sizing: border-box;
   margin: 1em 0;
   padding-bottom: 1em;
   /* &:after is for the skewed gradient you see behind the header */
 }
-.resource #block-lai-page-title:after {
+.resource #block-lai-page-title:after, .resource-override #block-lai-page-title:after {
   content: "";
   display: block;
   position: absolute;
@@ -120,13 +120,13 @@
   width: 100%;
 }
 @media screen and (min-width: 1150px) {
-  .resource #block-lai-page-title:after {
+  .resource #block-lai-page-title:after, .resource-override #block-lai-page-title:after {
     left: -25px;
     width: calc(100% + 50px);
     transform: skew(-20deg);
   }
 }
-.resource #block-lai-page-title h1 {
+.resource #block-lai-page-title h1, .resource-override #block-lai-page-title h1 {
   font-size: 2.2em;
   padding: 0.3em 0.3em 0.4em;
   position: relative;
@@ -136,16 +136,16 @@
   /* &:before is for the skewed white area you see on top of the gradient but below the header text */
 }
 @media screen and (min-width: 600px) {
-  .resource #block-lai-page-title h1 {
+  .resource #block-lai-page-title h1, .resource-override #block-lai-page-title h1 {
     font-size: 2.6em;
   }
 }
 @media screen and (min-width: 800px) {
-  .resource #block-lai-page-title h1 {
+  .resource #block-lai-page-title h1, .resource-override #block-lai-page-title h1 {
     font-size: 3em;
   }
 }
-.resource #block-lai-page-title h1:before {
+.resource #block-lai-page-title h1:before, .resource-override #block-lai-page-title h1:before {
   content: "";
   display: block;
   position: absolute;
@@ -158,7 +158,7 @@
   z-index: -1;
 }
 @media screen and (min-width: 800px) {
-  .resource #block-lai-page-title h1:before {
+  .resource #block-lai-page-title h1:before, .resource-override #block-lai-page-title h1:before {
     width: calc(100% + 50px);
   }
 }
@@ -305,18 +305,18 @@
     margin-left: 5em;
   }
 }
-.resource-icon-block svg {
+.resource-icon-block svg, .resource-icon-block img {
   max-width: 35px;
   max-height: 35px;
 }
 @media screen and (min-width: 600px) {
-  .resource-icon-block svg {
+  .resource-icon-block svg, .resource-icon-block img {
     max-width: 45px;
     max-height: 45px;
   }
 }
 @media screen and (min-width: 800px) {
-  .resource-icon-block svg {
+  .resource-icon-block svg, .resource-icon-block img {
     max-width: 50px;
     max-height: 50px;
   }

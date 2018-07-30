@@ -101,7 +101,7 @@
 }
 
 /* This is styling for the <h1> title on landing pages for individual resources or services. */
-.resource #block-lai-page-title {
+.resource #block-lai-page-title, .resource-override #block-lai-page-title {
   position: relative;
   box-sizing: border-box;
   margin: 1em 0;
@@ -200,7 +200,7 @@ $gwcolors: rgb(227,25,55) rgb(255,200,46) rgb(122,193,67) rgb(0,131,103) rgb(0,1
   margin-top: 1.5em;
   position: relative;
   z-index: 3;
-  svg {
+  svg, img {
     max-width: 35px;
     max-height: 35px;
     @include mediaMin(600px) {
