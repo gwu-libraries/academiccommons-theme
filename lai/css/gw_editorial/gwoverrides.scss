@@ -213,3 +213,32 @@ h4 {
 button, html input[type="button"], input[type="reset"], input[type="submit"] {
   margin: 0;
 }
+
+/* =========== GW Webforms ========== */
+
+/* The bright red text for required form fields is so jarring. Here's an alternative. */
+.form-required {
+  color: inherit;
+  position: relative;
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    background-color: #c00;
+    margin-right: .4em;
+    vertical-align: .25em;
+  }
+  &:hover:after {
+    content: "This field is required";
+    display: block;
+    position: absolute;
+    left: 90%;
+    bottom: 80%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: .5em;
+    white-space: nowrap;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.2);
+  }
+}
