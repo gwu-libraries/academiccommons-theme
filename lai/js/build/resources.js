@@ -7,6 +7,8 @@
       $(document).ajaxComplete(function(){
         $(".resource-bucket a").attr("tabindex","-1");
       });
+      // Prevent clicking directly on the <a> in the bucket from opening the link, since this was causing you to go "twice" (quite noticeable when opening in a new tab).
+      // Instead rely on the bubbling in the next section.
       $("#main-content").on("click", ".resource-bucket a", function(e) {
         e.preventDefault();
       });
