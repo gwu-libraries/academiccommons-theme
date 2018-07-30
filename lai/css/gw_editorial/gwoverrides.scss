@@ -126,6 +126,17 @@ span.menu__link {
   cursor: default;
 }
 
+/* At least for now, have 3rd-level flyout menus show up in the blue navbar when hovering them.  This is a stop-gap measure
+   while working on getting a solution where these 3rd-level items get added to a left-hand sidebar within the related pages.  */
+ul.nice-menu-down li ul li {
+  &:hover ul {
+    visibility: visible;
+  }
+  ul {
+    left: 100%;
+  }
+}
+
 /* Avoid the problem of the last submenu's contents from going off-screen when open or causing a mysterious horizontal scrollbar when closed by right-aligning it to the parent. */
 ul.nice-menu-down li:last-child ul, ul.nice-menu li:last-child ul {
   left: auto;
