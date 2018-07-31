@@ -1,6 +1,7 @@
 {#
 /**
  * Maxs: Adding .mainWrapper since our base GW Editorial CSS was looking for it but not finding it.
+ *       Adding .container to .mainWrapper since the subsequent bootstrap .row class seems to be assuming that for a parent for padding issues.
  */
 #}
 	  {% if page.header|render %}
@@ -13,7 +14,7 @@
 
 			<div id="main-content" class="container">
 
-                            <div class="mainWrapper">
+                            <div class="mainWrapper container">
 
 				<div class="row">					
 					
