@@ -15,5 +15,9 @@
 .find-peercoaching #pcCourseNumberInfo h3 {
   margin-top: 0;
 }
+.find-peercoaching #noCourseNumbers {
+  margin: 1em 0;
+  font-style: italic;
+}
 
 /*# sourceMappingURL=peer-coaching.css.map */
