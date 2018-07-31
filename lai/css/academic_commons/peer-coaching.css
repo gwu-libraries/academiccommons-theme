@@ -1,0 +1,19 @@
+.find-peercoaching form {
+  display: flex;
+  flex-wrap: wrap;
+}
+.find-peercoaching form > * {
+  width: 100%;
+}
+.find-peercoaching #fieldsetDepartment, .find-peercoaching #fieldsetCourseNumber {
+  width: auto;
+  margin-right: 20px;
+}
+.find-peercoaching #fieldsetCourseNumberInfo {
+  margin-top: 1em;
+}
+.find-peercoaching #pcCourseNumberInfo h3 {
+  margin-top: 0;
+}
+
+/*# sourceMappingURL=peer-coaching.css.map */

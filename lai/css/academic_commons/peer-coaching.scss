@@ -1,0 +1,24 @@
+// ========== Global Mixins & Variables
+@import "../utilities";
+
+.find-peercoaching {
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    & > * {
+      width: 100%;
+    }
+  }
+  #fieldsetDepartment, #fieldsetCourseNumber {
+    width: auto;
+    margin-right: 20px;
+  }
+  #fieldsetCourseNumberInfo {
+    margin-top: 1em;
+  }
+  #pcCourseNumberInfo {
+    h3 {
+      margin-top: 0;
+    }
+  }
+}
