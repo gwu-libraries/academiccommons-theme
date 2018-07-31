@@ -163,6 +163,11 @@ ul.nice-menu a.mean-expand {
   padding-left: 1.5rem;
 }
 
+/* Don't bother with 3rd-level submenu items in navbar on mobile */
+.mean-container .mean-nav ul li ul li a.mean-expand {
+  display: none;
+}
+
 /* The hamburger menu's label ("MENU") wasn't originally conceived for possibly including links, 
    but since we've customized it to make that text configurable, improve styling of any links in there */
 #mobile-menu-label a, #mobile-menu-label a:focus, #mobile-menu-label a:hover {
