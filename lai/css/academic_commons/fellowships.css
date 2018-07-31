@@ -123,8 +123,13 @@
   left: -1px;
   top: calc(100% - 1px);
   background-color: #f9f9f9;
-  min-width: 300px;
+  min-width: calc(100vw - 32px);
   display: none;
+}
+@media screen and (min-width: 350px) {
+  .find-fellowships form fieldset .fieldset-wrapper {
+    min-width: 300px;
+  }
 }
 .find-fellowships form fieldset.checked-children, .find-fellowships form fieldset.checked-children .fieldset-wrapper {
   border: 1px solid #0073aa;
@@ -146,7 +151,6 @@
 .find-fellowships form > .js-form-type-textfield {
   /* Search box */
   order: 3;
-  white-space: nowrap;
   margin-right: 1em;
   margin-bottom: 1em;
 }
