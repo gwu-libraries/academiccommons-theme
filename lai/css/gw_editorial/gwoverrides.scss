@@ -39,6 +39,11 @@
   }
 }
 
+/* No idea why gweverything.css has these displaying as table-cell, but it's causing odd-looking lists in some circumstances. */
+.container ul, .container ol {
+  display: block;
+}
+
 /* =========== GW Header =========== */
 
 $headerHeight: 132;
