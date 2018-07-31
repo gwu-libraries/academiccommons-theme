@@ -1,4 +1,5 @@
 <?php
+use Drupal\Core\Cache\CacheableMetadata;
 
 /**
  * @file
@@ -38,8 +39,6 @@ function lai_form_search_block_form_alter(&$form, &$form_state, $form_id) {
   $form['keys']['#attributes']['maxlength'] = 255;
 }
 
-
-use Drupal\Core\Cache\CacheableMetadata;
 
 /**
  * Prepares variables for the html.html.twig template.
