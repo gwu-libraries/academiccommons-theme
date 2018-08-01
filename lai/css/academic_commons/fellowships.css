@@ -131,6 +131,10 @@
     min-width: 300px;
   }
 }
+.find-fellowships form fieldset .fieldset-wrapper.right-align-flyout {
+  left: auto;
+  right: -1px;
+}
 .find-fellowships form fieldset.checked-children, .find-fellowships form fieldset.checked-children .fieldset-wrapper {
   border: 1px solid #0073aa;
 }

@@ -128,6 +128,10 @@
           min-width: 300px;
         }
         display: none;
+        &.right-align-flyout {
+          left: auto;
+          right: -1px;
+        }
       }
       &.checked-children, &.checked-children .fieldset-wrapper {
           border: 1px solid $gwlightblue;
