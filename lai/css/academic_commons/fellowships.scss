@@ -60,6 +60,29 @@
   }
 }
 
+/* These are very fragile selectors as well, only put at the moment while we figure out the source of the bug that's preventing regular Drupal classes from getting added to field labels/items */
+.fellowship__eligibility-area div:first-child, 
+.fellowship__period-of-study div:first-child, 
+.fellowship__award div:first-child, 
+.fellowship__application div:first-child, 
+.fellowship__deadline-s- div:first-child, 
+.fellowship__special-considerations div:first-child {
+//  font-weight: bold !important; /* !important to override some overreaching styling set in gweverything.css */
+  color: $gwdarkblue;
+  font-family: "AvenirLT-Heavy",Helvetica,Arial,sans-serif;
+  margin: .7em 0 .3em;
+  font-size: 1.8em;
+  @include mediaMin(500px) {
+    font-size: 2.25em;
+  }
+}
+
+.fellowship .content {
+  h2, h3, h4, h5, h6 {
+    margin-top: .7em;
+  }
+}
+
 .container .content div {
     display: block;
 }
