@@ -7,7 +7,6 @@ global:
       css/import-all.css: {} # Imports various stylesheets instead of enumerating them here, for better sharing with CKEditor
       https://calendly.com/assets/external/widget.css: { type: external, minified: true }
   js:
-    js/build/bootstrap.js: {}
     js/build/sticky-nav.js: {}
     js/build/resources.js: {}
     js/build/peer-coaching.js: {}
