@@ -15,7 +15,7 @@ global:
     https://calendly.com/assets/external/widget.js: { type: external, minified: true }
   dependencies:
     - core/jquery
-
+    - core/drupal.dialog.ajax	
 exposedfiltersoverrides:
   version: VERSION
   js:
