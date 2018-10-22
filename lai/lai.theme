@@ -86,7 +86,20 @@ function lai_preprocess_html(&$variables) {
 function lai_preprocess_field(&$variables, $hook) {
   // Make additional variables available to the template.
   $variables['bundle'] = $variables['element']['#bundle'];
+
+  $variables['name'] = $variables['element']['#field_name'];
+  $name = $variables['name'];
+  $bundle = $variables['element']['#bundle'];
+  $mode = $variables['element']['#view_mode'];
+  $label = $variables['element']['label'];
+  $item = $variables['element']['#item'];
+  
+  $classes[] = 'field-wrapper';
+  $title_classes[] = 'field-label';
+  $content_classes[] = 'field-items';
+  $item_classes[] = 'field-item';
 }
+
 
 function lai_preprocess_page(&$variables) {
   //$variables['lai_header'] = get_lai_header();
