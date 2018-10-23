@@ -5,87 +5,68 @@
   padding: 1em;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
-  box-sizing: border-box;
-}
-@media screen and (min-width: 550px) {
-  .fellowship-details {
-    width: 50%;
-    float: right;
-    margin-left: 2em;
-  }
-}
-@media screen and (min-width: 800px) {
-  .fellowship-details {
-    width: 33%;
-  }
-}
-.fellowship-details legend {
-  display: none;
-}
-.fellowship-details .fieldset-wrapper > div {
-  display: table-row !important;
-  /* Overrides of the above for "GWU Sponsored?" and "GWU Endorsement Required?" fields, which are booleans instead of lists */
-}
-.fellowship-details .fieldset-wrapper > div > div:first-child {
-  display: inline-block;
-  display: table-cell;
-  font-weight: bold !important;
-  /* !important to override some GW style */
-}
-.fellowship-details .fieldset-wrapper > div > div:first-child:after {
-  content: ":";
-}
-.fellowship-details .fieldset-wrapper > div > div:not(:first-child) {
-  margin-left: 0.75em;
-  padding-bottom: 0.75em;
-}
-.fellowship-details .fieldset-wrapper > div.fellowship__gwu-sponsored, .fellowship-details .fieldset-wrapper > div.fellowship__gwu-endorsement-required {
-  display: block !important;
-  margin-top: 0.5em;
-  text-align: right;
-}
-.fellowship-details .fieldset-wrapper > div.fellowship__gwu-sponsored > div, .fellowship-details .fieldset-wrapper > div.fellowship__gwu-endorsement-required > div {
-  display: inline;
-  padding-right: 0;
-  margin-left: 0;
-}
-.fellowship-details .fieldset-wrapper > div.fellowship__gwu-sponsored > div:after, .fellowship-details .fieldset-wrapper > div.fellowship__gwu-endorsement-required > div:after {
-  content: "";
-}
-.fellowship-details .fieldset-wrapper > div:last-child {
-  margin-bottom: 0;
-}
+  box-sizing: border-box; }
+  @media screen and (min-width: 550px) {
+    .fellowship-details {
+      width: 50%;
+      float: right;
+      margin-left: 2em; } }
+  @media screen and (min-width: 800px) {
+    .fellowship-details {
+      width: 33%; } }
+  .fellowship-details legend {
+    display: none; }
+  .fellowship-details .fieldset-wrapper > div {
+    display: table-row !important;
+    /* Overrides of the above for "GWU Sponsored?" and "GWU Endorsement Required?" fields, which are booleans instead of lists */ }
+    .fellowship-details .fieldset-wrapper > div > .field-label {
+      display: inline-block;
+      display: table-cell;
+      font-weight: bold !important;
+      /* !important to override some GW style */ }
+      .fellowship-details .fieldset-wrapper > div > .field-label:after {
+        content: ":"; }
+    .fellowship-details .fieldset-wrapper > div > :not(.field-label) {
+      margin-left: .75em;
+      padding-bottom: .75em; }
+    .fellowship-details .fieldset-wrapper > div.fellowship__gwu-sponsored, .fellowship-details .fieldset-wrapper > div.fellowship__gwu-endorsement-required {
+      display: block !important;
+      margin-top: .5em;
+      text-align: right; }
+      .fellowship-details .fieldset-wrapper > div.fellowship__gwu-sponsored > div, .fellowship-details .fieldset-wrapper > div.fellowship__gwu-endorsement-required > div {
+        display: inline;
+        padding-right: 0;
+        margin-left: 0; }
+        .fellowship-details .fieldset-wrapper > div.fellowship__gwu-sponsored > div:after, .fellowship-details .fieldset-wrapper > div.fellowship__gwu-endorsement-required > div:after {
+          content: ""; }
+    .fellowship-details .fieldset-wrapper > div:last-child {
+      margin-bottom: 0; }
 
 /* These are very fragile selectors as well, only put at the moment while we figure out the source of the bug that's preventing regular Drupal classes from getting added to field labels/items */
-.fellowship__eligibility-area div:first-child,
-.fellowship__period-of-study div:first-child,
-.fellowship__award div:first-child,
-.fellowship__application div:first-child,
-.fellowship__deadline-s- div:first-child,
-.fellowship__special-considerations div:first-child {
+.fellowship__eligibility-area .field-label,
+.fellowship__period-of-study .field-label,
+.fellowship__award .field-label,
+.fellowship__application .field-label,
+.fellowship__deadline-s- .field-label,
+.fellowship__special-considerations .field-label {
   color: #004065;
-  font-family: "AvenirLT-Heavy", Helvetica, Arial, sans-serif;
-  margin: 0.7em 0 0.3em;
-  font-size: 1.8em;
-}
-@media screen and (min-width: 500px) {
-  .fellowship__eligibility-area div:first-child,
-.fellowship__period-of-study div:first-child,
-.fellowship__award div:first-child,
-.fellowship__application div:first-child,
-.fellowship__deadline-s- div:first-child,
-.fellowship__special-considerations div:first-child {
-    font-size: 2.25em;
-  }
-}
+  font-family: "AvenirLT-Heavy",Helvetica,Arial,sans-serif;
+  margin: .7em 0 .3em;
+  font-size: 1.8em; }
+  @media screen and (min-width: 500px) {
+    .fellowship__eligibility-area .field-label,
+    .fellowship__period-of-study .field-label,
+    .fellowship__award .field-label,
+    .fellowship__application .field-label,
+    .fellowship__deadline-s- .field-label,
+    .fellowship__special-considerations .field-label {
+      font-size: 2.25em; } }
 
 .fellowship .content h2, .fellowship .content h3, .fellowship .content h4, .fellowship .content h5, .fellowship .content h6 {
-  margin-top: 0.7em;
-}
+  margin-top: .7em; }
 
 .container .content div {
-  display: block;
-}
+  display: block; }
 
 /* 
   CSS for the areas dedicated to filtering and searching fellowships.
@@ -93,287 +74,234 @@
   or hard-coded into the FellowshipsFilterController.php output
 */
 .find-fellowships {
-  margin-top: 1.5em;
-}
-.find-fellowships form {
-  display: flex;
-  flex-wrap: wrap;
-}
-.find-fellowships form fieldset {
-  order: 1;
-  border: 1px solid #ccc;
-  position: relative;
-  margin-right: 15px;
-}
-.find-fellowships form fieldset legend {
-  margin: 0;
-  padding: 0.5em 1em;
-  font-size: 1em;
-  cursor: pointer;
-  float: left;
-  width: 100%;
-  position: relative;
-  z-index: 2;
-  border-bottom: 1px solid #f9f9f9;
-  background-color: #f9f9f9;
-}
-.find-fellowships form fieldset legend:after {
-  content: "";
-  display: inline-block;
-  /* CSS triangle */
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 10.4px 6px 0 6px;
-  border-color: #e8e8e8 transparent transparent transparent;
-  margin-left: 0.25em;
-  /* Border around CSS triangle */
-  filter: drop-shadow(0 0 0.6px #666) drop-shadow(0 0 0 #666) drop-shadow(0 0 0 #666) drop-shadow(0 0 0 #666);
-}
-.find-fellowships form fieldset legend .foo::-ms-backdrop, .find-fellowships form fieldset legend:after {
-  /* IE11 hack since "filter:" above doesn't work there, though need to check if Edge sees this too */
-  border-color: #777 transparent transparent transparent;
-}
-.find-fellowships form fieldset.checked-children legend:after {
-  content: "(" attr(data-checked-children-quantity) ")";
-  margin-left: 0;
-  color: #0073aa;
-  /* the following to "undo" the CSS triangle */
-  border-style: none;
-  display: inline;
-  filter: none;
-}
-.find-fellowships form fieldset .fieldset-wrapper {
-  padding: 1em;
-  border: 1px solid #ccc;
-  position: absolute;
-  left: -1px;
-  top: calc(100% - 1px);
-  background-color: #f9f9f9;
-  min-width: calc(100vw - 32px);
-  display: none;
-}
-@media screen and (min-width: 350px) {
-  .find-fellowships form fieldset .fieldset-wrapper {
-    min-width: 300px;
-  }
-}
-.find-fellowships form fieldset .fieldset-wrapper.right-align-flyout {
-  left: auto;
-  right: -1px;
-}
-.find-fellowships form fieldset.checked-children, .find-fellowships form fieldset.checked-children .fieldset-wrapper {
-  border: 1px solid #0073aa;
-}
-.find-fellowships form fieldset.checked-children:not(:hover) legend {
-  background-image: linear-gradient(to right, rgba(0, 115, 170, 0.05), rgba(0, 115, 170, 0.05));
-}
-.find-fellowships form fieldset:hover, .find-fellowships form fieldset:focus, .find-fellowships form fieldset.focused-child {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-.find-fellowships form fieldset:hover legend, .find-fellowships form fieldset:focus legend, .find-fellowships form fieldset.focused-child legend {
-  z-index: 4;
-}
-.find-fellowships form fieldset:hover .fieldset-wrapper, .find-fellowships form fieldset:focus .fieldset-wrapper, .find-fellowships form fieldset.focused-child .fieldset-wrapper {
-  display: block;
-  z-index: 3;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-.find-fellowships form > .js-form-type-textfield {
-  /* Search box */
-  order: 3;
-  margin-right: 1em;
-  margin-bottom: 1em;
-}
-.find-fellowships form .form-actions {
-  /* Search submit button */
-  order: 4;
-  flex: 1;
-  margin-bottom: 1em;
-}
-.find-fellowships form > .js-form-type-select {
-  /* Sort dropdown */
-  order: 5;
-  margin-left: auto;
-}
-.find-fellowships form:before {
-  /* Hack to force "line break" between rows of flex children by setting its "order" group value to be 1 higher than the "row" preceding it */
-  content: "";
-  width: 100%;
-  order: 2;
-  margin-bottom: 1em;
-}
+  margin-top: 1.5em; }
+  .find-fellowships form {
+    display: flex;
+    flex-wrap: wrap; }
+    .find-fellowships form fieldset {
+      order: 1;
+      border: 1px solid #ccc;
+      position: relative;
+      margin-right: 15px; }
+      .find-fellowships form fieldset legend {
+        margin: 0;
+        padding: .5em 1em;
+        font-size: 1em;
+        cursor: pointer;
+        float: left;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        border-bottom: 1px solid #f9f9f9;
+        background-color: #f9f9f9; }
+        .find-fellowships form fieldset legend:after {
+          content: "";
+          display: inline-block;
+          /* CSS triangle */
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 10.4px 6px 0 6px;
+          border-color: #e8e8e8 transparent transparent transparent;
+          margin-left: .25em;
+          /* Border around CSS triangle */
+          filter: drop-shadow(0 0 0.6px #666) drop-shadow(0 0 0 #666) drop-shadow(0 0 0 #666) drop-shadow(0 0 0 #666); }
+        .find-fellowships form fieldset legend .foo::-ms-backdrop, .find-fellowships form fieldset legend:after {
+          /* IE11 hack since "filter:" above doesn't work there, though need to check if Edge sees this too */
+          border-color: #777 transparent transparent transparent; }
+      .find-fellowships form fieldset.checked-children legend:after {
+        content: "(" attr(data-checked-children-quantity) ")";
+        margin-left: 0;
+        color: #0073aa;
+        /* the following to "undo" the CSS triangle */
+        border-style: none;
+        display: inline;
+        filter: none; }
+      .find-fellowships form fieldset .fieldset-wrapper {
+        padding: 1em;
+        border: 1px solid #ccc;
+        position: absolute;
+        left: -1px;
+        top: calc(100% - 1px);
+        background-color: #f9f9f9;
+        min-width: calc(100vw - 32px);
+        display: none; }
+        @media screen and (min-width: 350px) {
+          .find-fellowships form fieldset .fieldset-wrapper {
+            min-width: 300px; } }
+        .find-fellowships form fieldset .fieldset-wrapper.right-align-flyout {
+          left: auto;
+          right: -1px; }
+      .find-fellowships form fieldset.checked-children, .find-fellowships form fieldset.checked-children .fieldset-wrapper {
+        border: 1px solid #0073aa; }
+      .find-fellowships form fieldset.checked-children:not(:hover) legend {
+        background-image: linear-gradient(to right, rgba(0, 115, 170, 0.05), rgba(0, 115, 170, 0.05)); }
+      .find-fellowships form fieldset:hover, .find-fellowships form fieldset:focus, .find-fellowships form fieldset.focused-child {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+        .find-fellowships form fieldset:hover legend, .find-fellowships form fieldset:focus legend, .find-fellowships form fieldset.focused-child legend {
+          z-index: 4; }
+        .find-fellowships form fieldset:hover .fieldset-wrapper, .find-fellowships form fieldset:focus .fieldset-wrapper, .find-fellowships form fieldset.focused-child .fieldset-wrapper {
+          display: block;
+          z-index: 3;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+    .find-fellowships form > .js-form-type-textfield {
+      /* Search box */
+      order: 3;
+      margin-right: 1em;
+      margin-bottom: 1em; }
+    .find-fellowships form .form-actions {
+      /* Search submit button */
+      order: 4;
+      flex: 1;
+      margin-bottom: 1em; }
+    .find-fellowships form > .js-form-type-select {
+      /* Sort dropdown */
+      order: 5;
+      margin-left: auto; }
+    .find-fellowships form:before {
+      /* Hack to force "line break" between rows of flex children by setting its "order" group value to be 1 higher than the "row" preceding it */
+      content: '';
+      width: 100%;
+      order: 2;
+      margin-bottom: 1em; }
 
 .find-fellowships .fieldset-wrapper .form-item {
   padding-left: calc(30px + .5em);
-  /* :not(:hover) here to avoid the weirdness of getting the outline when clicking instead of tabbing (though realizing it will be there as soon as hovered away from) */
-}
-.find-fellowships .fieldset-wrapper .form-item input {
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  position: absolute;
-  left: -10000px;
-  top: auto;
-}
-.find-fellowships .fieldset-wrapper .form-item label {
-  display: block;
-  position: relative;
-  cursor: pointer;
-  margin-left: calc(-30px - .5em);
-  padding-left: calc(30px + .5em);
-}
-.find-fellowships .fieldset-wrapper .form-item label:before {
-  content: "";
-  display: inline-block;
-  height: 20px;
-  width: 30px;
-  background-color: #ccc;
-  border-radius: 10px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  transition: all 0.2s;
-}
-.intersection.find-fellowships .fieldset-wrapper .form-item label:before {
-  border-radius: 0;
-  width: 20px;
-}
-
-.find-fellowships .fieldset-wrapper .form-item label:after {
-  content: "";
-  display: inline-block;
-  height: 16px;
-  width: 16px;
-  background-color: #fff;
-  border-radius: 8px;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  transition: all 0.2s;
-}
-.intersection.find-fellowships .fieldset-wrapper .form-item label:after {
-  border-radius: 0;
-}
-
-.find-fellowships .fieldset-wrapper .form-item input:checked + label:before {
-  background-color: #0073aa;
-  transition: all 0.2s;
-}
-.find-fellowships .fieldset-wrapper .form-item input:checked + label:after {
-  left: 12px;
-  transition: all 0.2s;
-}
-.intersection.find-fellowships .fieldset-wrapper .form-item input:checked + label:after {
-  left: 6px;
-  border: 0 solid #fff;
-  border-width: 0 3px 3px 0;
-  width: 8px;
-  height: 12px;
-  transform: rotate(45deg);
-  background-color: transparent;
-}
-
-.find-fellowships .fieldset-wrapper .form-item input:focus + label:not(:hover) {
-  outline: 1px dotted;
-}
+  /* :not(:hover) here to avoid the weirdness of getting the outline when clicking instead of tabbing (though realizing it will be there as soon as hovered away from) */ }
+  .find-fellowships .fieldset-wrapper .form-item input {
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    position: absolute;
+    left: -10000px;
+    top: auto; }
+  .find-fellowships .fieldset-wrapper .form-item label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    margin-left: calc(-30px - .5em);
+    padding-left: calc(30px + .5em); }
+    .find-fellowships .fieldset-wrapper .form-item label:before {
+      content: "";
+      display: inline-block;
+      height: 20px;
+      width: 30px;
+      background-color: #ccc;
+      border-radius: 10px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: all .2s; }
+      .intersection.find-fellowships .fieldset-wrapper .form-item label:before {
+        border-radius: 0;
+        width: 20px; }
+    .find-fellowships .fieldset-wrapper .form-item label:after {
+      content: "";
+      display: inline-block;
+      height: 16px;
+      width: 16px;
+      background-color: #fff;
+      border-radius: 8px;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: all .2s; }
+      .intersection.find-fellowships .fieldset-wrapper .form-item label:after {
+        border-radius: 0; }
+  .find-fellowships .fieldset-wrapper .form-item input:checked + label:before {
+    background-color: #0073aa;
+    transition: all .2s; }
+  .find-fellowships .fieldset-wrapper .form-item input:checked + label:after {
+    left: 12px;
+    transition: all .2s; }
+    .intersection.find-fellowships .fieldset-wrapper .form-item input:checked + label:after {
+      left: 6px;
+      border: 0 solid #fff;
+      border-width: 0 3px 3px 0;
+      width: 8px;
+      height: 12px;
+      transform: rotate(45deg);
+      background-color: transparent; }
+  .find-fellowships .fieldset-wrapper .form-item input:focus + label:not(:hover) {
+    outline: 1px dotted; }
 
 /* CSS for the results on the fellowships searching/filtering page */
 .find-fellowships .field-content {
-  clear: both;
-}
-.find-fellowships .field-content .fellowships-region {
-  min-width: 120px;
-  max-width: 120px;
-  min-height: 120px;
-  border-radius: 20px;
-  background-color: gray;
-  background-image: url("/themes/lai/images/fellowship-regions/earth.svg");
-  background-repeat: no-repeat;
-  background-size: calc(100% - 30px);
-  background-position: center;
-  float: right;
-  margin: 0 0px 20px 20px;
-  position: relative;
-  display: none;
-  /* can undo once we have more time to work on icons and fewer major bugs to work out */
-}
-.find-fellowships .field-content .fellowships-region:after {
-  position: absolute;
-  top: 100%;
-  margin-top: 0.25em;
-  content: "Multiple Regions";
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-}
+  clear: both; }
+  .find-fellowships .field-content .fellowships-region {
+    min-width: 120px;
+    max-width: 120px;
+    min-height: 120px;
+    border-radius: 20px;
+    background-color: gray;
+    background-image: url("/themes/lai/images/fellowship-regions/earth.svg");
+    background-repeat: no-repeat;
+    background-size: calc(100% - 30px);
+    background-position: center;
+    float: right;
+    margin: 0 0px 20px 20px;
+    position: relative;
+    display: none;
+    /* can undo once we have more time to work on icons and fewer major bugs to work out */ }
+    .find-fellowships .field-content .fellowships-region:after {
+      position: absolute;
+      top: 100%;
+      margin-top: .25em;
+      content: "Multiple Regions";
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center; }
 
 .fellowships-region.africa:not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc) {
-  background-color: #e31937;
-}
-.fellowships-region.africa:not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc):after {
-  content: attr(data-region-name);
-  /* data-region-name set in the View with override results */
-}
+  background-color: #e31937; }
+  .fellowships-region.africa:not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc):after {
+    content: attr(data-region-name);
+    /* data-region-name set in the View with override results */ }
 
 .fellowships-region.asia:not(.africa):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc) {
   background-color: #ffc82e;
   background-image: url("/themes/lai/images/fellowship-regions/asia.svg");
   background-size: calc(100% - 20px);
   background-color: #c8b18b;
-  /* GW buff */
-}
-.fellowships-region.asia:not(.africa):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc):after {
-  content: attr(data-region-name);
-  /* data-region-name set in the View with override results */
-}
+  /* GW buff */ }
+  .fellowships-region.asia:not(.africa):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc):after {
+    content: attr(data-region-name);
+    /* data-region-name set in the View with override results */ }
 
 .fellowships-region.centralam:not(.africa):not(.asia):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc) {
-  background-color: #7ac143;
-}
-.fellowships-region.centralam:not(.africa):not(.asia):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc):after {
-  content: attr(data-region-name);
-  /* data-region-name set in the View with override results */
-}
+  background-color: #7ac143; }
+  .fellowships-region.centralam:not(.africa):not(.asia):not(.europe):not(.mideast):not(.northam):not(.southam):not(.dc):after {
+    content: attr(data-region-name);
+    /* data-region-name set in the View with override results */ }
 
 .fellowships-region.europe:not(.africa):not(.asia):not(.centralam):not(.mideast):not(.northam):not(.southam):not(.dc) {
-  background-color: #008367;
-}
-.fellowships-region.europe:not(.africa):not(.asia):not(.centralam):not(.mideast):not(.northam):not(.southam):not(.dc):after {
-  content: attr(data-region-name);
-  /* data-region-name set in the View with override results */
-}
+  background-color: #008367; }
+  .fellowships-region.europe:not(.africa):not(.asia):not(.centralam):not(.mideast):not(.northam):not(.southam):not(.dc):after {
+    content: attr(data-region-name);
+    /* data-region-name set in the View with override results */ }
 
 .fellowships-region.mideast:not(.africa):not(.asia):not(.centralam):not(.europe):not(.northam):not(.southam):not(.dc) {
-  background-color: #0096d6;
-}
-.fellowships-region.mideast:not(.africa):not(.asia):not(.centralam):not(.europe):not(.northam):not(.southam):not(.dc):after {
-  content: attr(data-region-name);
-  /* data-region-name set in the View with override results */
-}
+  background-color: #0096d6; }
+  .fellowships-region.mideast:not(.africa):not(.asia):not(.centralam):not(.europe):not(.northam):not(.southam):not(.dc):after {
+    content: attr(data-region-name);
+    /* data-region-name set in the View with override results */ }
 
 .fellowships-region.northam:not(.africa):not(.asia):not(.centralam):not(.europe):not(.mideast):not(.southam):not(.dc) {
-  background-color: #004065;
-}
-.fellowships-region.northam:not(.africa):not(.asia):not(.centralam):not(.europe):not(.mideast):not(.southam):not(.dc):after {
-  content: attr(data-region-name);
-  /* data-region-name set in the View with override results */
-}
+  background-color: #004065; }
+  .fellowships-region.northam:not(.africa):not(.asia):not(.centralam):not(.europe):not(.mideast):not(.southam):not(.dc):after {
+    content: attr(data-region-name);
+    /* data-region-name set in the View with override results */ }
 
 .fellowships-region.southam:not(.africa):not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.dc) {
-  background-color: black;
-}
-.fellowships-region.southam:not(.africa):not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.dc):after {
-  content: attr(data-region-name);
-  /* data-region-name set in the View with override results */
-}
+  background-color: black; }
+  .fellowships-region.southam:not(.africa):not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.dc):after {
+    content: attr(data-region-name);
+    /* data-region-name set in the View with override results */ }
 
 .fellowships-region.dc:not(.africa):not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam) {
-  background-color: white;
-}
-.fellowships-region.dc:not(.africa):not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):after {
-  content: attr(data-region-name);
-  /* data-region-name set in the View with override results */
-}
+  background-color: white; }
+  .fellowships-region.dc:not(.africa):not(.asia):not(.centralam):not(.europe):not(.mideast):not(.northam):not(.southam):after {
+    content: attr(data-region-name);
+    /* data-region-name set in the View with override results */ }
 
 /*# sourceMappingURL=fellowships.css.map */
