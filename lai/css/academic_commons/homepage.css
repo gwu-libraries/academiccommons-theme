@@ -36,7 +36,7 @@
   margin-left: .5em;
 }
 
-.block-lai-page-title h1 {
+.path-frontpage .block-lai-page-title h1 {
   clip-path: inset(100%);
   clip: rect(1px 1px 1px 1px);
   /* IE 6/7 */
