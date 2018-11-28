@@ -90,9 +90,15 @@ function lai_preprocess_field(&$variables, $hook) {
   $variables['name'] = $variables['element']['#field_name'];
   $name = $variables['name'];
   $bundle = $variables['element']['#bundle'];
-  $mode = $variables['element']['#view_mode'];
-  $label = $variables['element']['label'];
-  $item = $variables['element']['#item'];
+  $mode = $variables['element']['#view_mode'];  
+  
+  if(!empty($variables['element']['label'])){
+	$label = $variables['element']['label'];
+  }
+  
+  if(!empty($variables['element']['#item'])){
+	$item = $variables['element']['#item'];
+  }
   
   $classes[] = 'field-wrapper';
   $title_classes[] = 'field-label';
