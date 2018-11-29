@@ -60,13 +60,8 @@
   }
 }
 
-.fellowship__eligibility-area .field-label, 
-.fellowship__period-of-study .field-label, 
-.fellowship__award .field-label, 
-.fellowship__application .field-label, 
-.fellowship__deadline-s- .field-label, 
-.fellowship__special-considerations .field-label {
-//  font-weight: bold !important; /* !important to override some overreaching styling set in gweverything.css */
+/* Style the field labels in the "body" of fellowship pages like h2s */
+.fellowship .content > div > .field-label {
   color: $gwdarkblue;
   font-family: "AvenirLT-Heavy",Helvetica,Arial,sans-serif;
   margin: .7em 0 .3em;
