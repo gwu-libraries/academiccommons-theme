@@ -27,7 +27,7 @@
   // These are some fragile selectors, since for some reason the following classes that normally get output aren't: .field, .field__label, .field__items and .field__item
   .fieldset-wrapper > div {
     display: table-row !important;
-    & > div:first-child {
+    & > .field-label {
       display: inline-block;
       display: table-cell;
 //      text-align: right;
@@ -36,7 +36,7 @@
         content: ":";
       }
     }
-    & > div:not(:first-child) {
+    & > :not(.field-label) {
       margin-left: .75em;
       padding-bottom: .75em;
     }
@@ -60,14 +60,8 @@
   }
 }
 
-/* These are very fragile selectors as well, only put at the moment while we figure out the source of the bug that's preventing regular Drupal classes from getting added to field labels/items */
-.fellowship__eligibility-area div:first-child, 
-.fellowship__period-of-study div:first-child, 
-.fellowship__award div:first-child, 
-.fellowship__application div:first-child, 
-.fellowship__deadline-s- div:first-child, 
-.fellowship__special-considerations div:first-child {
-//  font-weight: bold !important; /* !important to override some overreaching styling set in gweverything.css */
+/* Style the field labels in the "body" of fellowship pages like h2s */
+.fellowship .content > div > .field-label {
   color: $gwdarkblue;
   font-family: "AvenirLT-Heavy",Helvetica,Arial,sans-serif;
   margin: .7em 0 .3em;

@@ -26,16 +26,16 @@
   display: table-row !important;
   /* Overrides of the above for "GWU Sponsored?" and "GWU Endorsement Required?" fields, which are booleans instead of lists */
 }
-.fellowship-details .fieldset-wrapper > div > div:first-child {
+.fellowship-details .fieldset-wrapper > div > .field-label {
   display: inline-block;
   display: table-cell;
   font-weight: bold !important;
   /* !important to override some GW style */
 }
-.fellowship-details .fieldset-wrapper > div > div:first-child:after {
+.fellowship-details .fieldset-wrapper > div > .field-label:after {
   content: ":";
 }
-.fellowship-details .fieldset-wrapper > div > div:not(:first-child) {
+.fellowship-details .fieldset-wrapper > div > :not(.field-label) {
   margin-left: 0.75em;
   padding-bottom: 0.75em;
 }
@@ -56,25 +56,15 @@
   margin-bottom: 0;
 }
 
-/* These are very fragile selectors as well, only put at the moment while we figure out the source of the bug that's preventing regular Drupal classes from getting added to field labels/items */
-.fellowship__eligibility-area div:first-child,
-.fellowship__period-of-study div:first-child,
-.fellowship__award div:first-child,
-.fellowship__application div:first-child,
-.fellowship__deadline-s- div:first-child,
-.fellowship__special-considerations div:first-child {
+/* Style the field labels in the "body" of fellowship pages like h2s */
+.fellowship .content > div > .field-label {
   color: #004065;
   font-family: "AvenirLT-Heavy", Helvetica, Arial, sans-serif;
   margin: 0.7em 0 0.3em;
   font-size: 1.8em;
 }
 @media screen and (min-width: 500px) {
-  .fellowship__eligibility-area div:first-child,
-.fellowship__period-of-study div:first-child,
-.fellowship__award div:first-child,
-.fellowship__application div:first-child,
-.fellowship__deadline-s- div:first-child,
-.fellowship__special-considerations div:first-child {
+  .fellowship .content > div > .field-label {
     font-size: 2.25em;
   }
 }

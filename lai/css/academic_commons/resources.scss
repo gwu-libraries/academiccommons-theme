@@ -23,9 +23,6 @@
     position: relative;
     overflow: hidden;
   }
-  .resource-bucket {
-    cursor: pointer;
-  }
   .resource-photo {
     position: absolute;
     height: 180px;
@@ -87,13 +84,15 @@
     font-family: "AvenirLTStd-Roman",Helvetica,Arial,sans-serif;
     z-index: 3;
     position: relative;
-    a {
-      color: #fff;
-      font-family: "AvenirLTStd-Roman",Helvetica,Arial,sans-serif;
-      &:hover {
-        text-decoration: none;
-      }
-    }
+    color: #fff;
+  }
+  .resource-bucket:hover, .resource-bucket:focus {
+    text-decoration: none;
+  }
+  /* Instead of 'outline' on focus to show current item for accessibility reasons, use some inset box-shadow that's 
+     easier to see, doesn't have overflow and browser support issues that outline does, and doesn't require width adjustment like border */
+  .resource-bucket:focus .resource-title {
+    box-shadow: inset 2px 2px 0 0 $gwlightblue, inset -2px -2px 0 0 #fff;
   }
   .resource-teaser {
     margin: 1em 0;
