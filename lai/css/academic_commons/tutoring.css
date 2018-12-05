@@ -1,26 +1,26 @@
-.find-peercoaching form {
+.find-tutoring form {
   display: flex;
   flex-wrap: wrap;
 }
-.find-peercoaching form > * {
+.find-tutoring form > * {
   width: 100%;
 }
-.find-peercoaching #fieldsetDepartment, .find-peercoaching #fieldsetCourseNumber {
+.find-tutoring #fieldsetDepartment, .find-tutoring #fieldsetCourseNumber {
   width: auto;
   margin-right: 20px;
 }
-.find-peercoaching #fieldsetCourseNumberInfo {
+.find-tutoring #fieldsetCourseNumberInfo {
   margin-top: 1em;
 }
-.find-peercoaching #pcCourseNumberInfo h3 {
+.find-tutoring #pcCourseNumberInfo h3 {
   margin-top: 0;
 }
-.find-peercoaching #noCourseNumbers {
+.find-tutoring #noCourseNumbers {
   margin: 1em 0;
   font-style: italic;
 }
 
-#peer-coaching-event-info h2 {
+#tutoring-event-info h2 {
   margin-top: 0.25em;
 }
 

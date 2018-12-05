@@ -1,7 +1,7 @@
 // ========== Global Mixins & Variables
 @import "../utilities";
 
-.find-peercoaching {
+.find-tutoring {
   form {
     display: flex;
     flex-wrap: wrap;
@@ -27,6 +27,6 @@
   }
 }
 
-#peer-coaching-event-info h2 {
+#tutoring-event-info h2 {
   margin-top: .25em;
 }
