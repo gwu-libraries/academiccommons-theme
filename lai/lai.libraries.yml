@@ -9,7 +9,7 @@ global:
   js:
     js/build/sticky-nav.js: {}
     js/build/resources.js: {}
-    js/build/peer-coaching.js: {}
+    js/build/tutoring.js: {}
     js/build/meanmenu.js: {}
     js/build/lai-customizations.js: {} # listed last to access references in files listed before it
     https://calendly.com/assets/external/widget.js: { type: external, minified: true }
