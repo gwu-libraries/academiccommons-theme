@@ -27,13 +27,24 @@
   margin: 0;
 }
 .path-frontpage #search-block-form div:first-child input {
-  padding: 0.5em;
+  padding: .5em;
   width: 100%;
   box-sizing: border-box;
 }
 .path-frontpage #search-block-form div:last-child {
   /* search button wrapper */
-  margin-left: 0.5em;
+  margin-left: .5em;
 }
 
-/*# sourceMappingURL=homepage.css.map */
+.path-frontpage .block-lai-page-title h1 {
+  clip-path: inset(100%);
+  clip: rect(1px 1px 1px 1px);
+  /* IE 6/7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  /* added line */
+  width: 1px;
+}

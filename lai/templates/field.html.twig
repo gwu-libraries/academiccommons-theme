@@ -18,3 +18,6 @@
   @todo: Remove when https://www.drupal.org/node/2779919 is resolved.
 #}
 {% set title_attributes = title_attributes.addClass(label_display == 'visually_hidden' ? 'visually-hidden') %}
+
+{# Add label class for field title #}
+{% set title_attributes = title_attributes.addClass('field-label') %}
