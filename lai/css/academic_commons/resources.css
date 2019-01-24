@@ -4,6 +4,8 @@
 .resources {
   display: flex !important;
   flex-wrap: wrap;
+  /* Instead of 'outline' on focus to show current item for accessibility reasons, use some inset box-shadow that's 
+     easier to see, doesn't have overflow and browser support issues that outline does, and doesn't require width adjustment like border */
 }
 @media screen and (min-width: 550px) {
   .resources {
@@ -25,9 +27,6 @@
   .resources > div {
     width: calc(33.33% - 20px);
   }
-}
-.resources .resource-bucket {
-  cursor: pointer;
 }
 .resources .resource-photo {
   position: absolute;
@@ -91,13 +90,13 @@
   font-family: "AvenirLTStd-Roman", Helvetica, Arial, sans-serif;
   z-index: 3;
   position: relative;
-}
-.resources h2 a {
   color: #fff;
-  font-family: "AvenirLTStd-Roman", Helvetica, Arial, sans-serif;
 }
-.resources h2 a:hover {
+.resources .resource-bucket:hover, .resources .resource-bucket:focus {
   text-decoration: none;
+}
+.resources .resource-bucket:focus .resource-title {
+  box-shadow: inset 2px 2px 0 0 #0073aa, inset -2px -2px 0 0 #fff;
 }
 .resources .resource-teaser {
   margin: 1em 0;
@@ -321,5 +320,3 @@
     max-height: 50px;
   }
 }
-
-/*# sourceMappingURL=resources.css.map */
