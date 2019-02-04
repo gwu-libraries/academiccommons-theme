@@ -8,3 +8,7 @@
 @import url("academic_commons/events.css");
 @import url("academic_commons/webforms.css");
 @import url("academic_commons/peer-coaching.css");
+
+div.content .peer_coaching_appointment_rsvp__review-session-info {
+  display: none;
+}
