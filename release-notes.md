@@ -13,3 +13,6 @@ Started as of September 11, 2018
 
 2019/01/10
 * Update twig templates that redirect traffic to custom pages to use the /tutoring URI instead of /peer-coaching (fixes [41](../../issues/41))
+
+2019/02/07
+* Hack to allow (along w/ config and AC modules changes) review session information to display in the same popup currently used for Calendly (fixes [44](../../issues/44))
