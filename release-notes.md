@@ -16,3 +16,6 @@ Started as of September 11, 2018
 
 2019/02/07
 * Hack to allow (along w/ config and AC modules changes) review session information to display in the same popup currently used for Calendly (fixes [44](../../issues/44))
+
+2019/03/04
+* Add styling for the GDPR/cookie-related notice (fixes [47](../../issues/47))
