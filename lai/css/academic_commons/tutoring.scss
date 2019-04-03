@@ -30,3 +30,9 @@
 #tutoring-event-info h2 {
   margin-top: .25em;
 }
+
+/* Hack to hide this field when not displayed through the Calendly popup hack
+   #content to make things more specific (else some other oddly-specific selector) */
+#content .peer_coaching_appointment_rsvp__review-session-info {
+  display: none;
+}
