@@ -19,3 +19,6 @@ Started as of September 11, 2018
 
 2019/03/04
 * Add styling for the GDPR/cookie-related notice (fixes [47](../../issues/47))
+
+2019/04/30
+* Remove references to Peer Coaching (associated JS/CSS added to module instead) (fixes [40](../../issues/40))
